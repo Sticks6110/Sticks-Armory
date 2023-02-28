@@ -1,0 +1,13 @@
+{
+    "mod_id": "armorysticks",
+    "author": "Sticks",
+    "name": "Sticks Armory",
+    "description": "Bombs, Missiles, Guns, Parts",
+    "source": "Github.com",
+    "version": "0.1.0.0.20892",
+    "dependencies": [],
+    "ksp2_version": {
+        "min": "0.1.0.0.20892",
+        "max": "0.2.0.0.20892"
+    }
+}
