@@ -30,6 +30,12 @@ public class Crater
         meshFilter.mesh.vertices = verts;
         meshFilter.mesh.RecalculateNormals();
 
+        if(craterObject.transform.GetComponent<MeshCollider>() is MeshCollider meshCollider)
+        {
+            meshCollider.sharedMesh = meshFilter.sharedMesh;
+
+        }
+
     }
 
 }

@@ -13,11 +13,18 @@
           "Assembly-CSharp": "0.0.0.0",
           "NewtonSoft.Json": "12.0.0.0",
           "SpaceWarp": "1.0.0.0",
+          "Unity.InputSystem": "1.3.0.0",
+          "Unity.TextMeshPro": "0.0.0.0",
+          "UnityEngine.AssetBundleModule": "0.0.0.0",
           "UnityEngine.CoreModule": "0.0.0.0",
           "UnityEngine": "0.0.0.0",
           "UnityEngine.InputLegacyModule": "0.0.0.0",
           "UnityEngine.InputModule": "0.0.0.0",
-          "UnityEngine.JSONSerializeModule": "0.0.0.0"
+          "UnityEngine.JSONSerializeModule": "0.0.0.0",
+          "UnityEngine.UI": "1.0.0.0",
+          "UnityEngine.UIElementsModule": "0.0.0.0",
+          "UnityEngine.UIElementsNativeModule": "0.0.0.0",
+          "UnityEngine.UIModule": "0.0.0.0"
         },
         "runtime": {
           "SticksArmory.dll": {}
@@ -50,6 +57,30 @@
           "SpaceWarp.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Unity.InputSystem/1.3.0.0": {
+        "runtime": {
+          "Unity.InputSystem.dll": {
+            "assemblyVersion": "1.3.0.0",
+            "fileVersion": "1.3.0.0"
+          }
+        }
+      },
+      "Unity.TextMeshPro/0.0.0.0": {
+        "runtime": {
+          "Unity.TextMeshPro.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.AssetBundleModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.AssetBundleModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -88,6 +119,38 @@
       "UnityEngine.JSONSerializeModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.JSONSerializeModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.UI/1.0.0.0": {
+        "runtime": {
+          "UnityEngine.UI.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.UIElementsModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.UIElementsModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.UIElementsNativeModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.UIElementsNativeModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.UIModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.UIModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -133,14 +196,6 @@
           }
         }
       },
-      "UnityEngine.UIElementsModule/0.0.0.0": {
-        "runtime": {
-          "UnityEngine.UIElementsModule.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "UnityEngine.AndroidJNIModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.AndroidJNIModule.dll": {
@@ -152,14 +207,6 @@
       "UnityEngine.AccessibilityModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.AccessibilityModule.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "UnityEngine.UIModule/0.0.0.0": {
-        "runtime": {
-          "UnityEngine.UIModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -216,14 +263,6 @@
       "UnityEngine.PhysicsModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.PhysicsModule.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "UnityEngine.AssetBundleModule/0.0.0.0": {
-        "runtime": {
-          "UnityEngine.AssetBundleModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -477,14 +516,6 @@
           }
         }
       },
-      "UnityEngine.UIElementsNativeModule/0.0.0.0": {
-        "runtime": {
-          "UnityEngine.UIElementsNativeModule.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "UnityEngine.VehiclesModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.VehiclesModule.dll": {
@@ -517,22 +548,6 @@
           }
         }
       },
-      "UnityEngine.UI/1.0.0.0": {
-        "runtime": {
-          "UnityEngine.UI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "Unity.TextMeshPro/0.0.0.0": {
-        "runtime": {
-          "Unity.TextMeshPro.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "Assembly-CSharp-firstpass/0.0.0.0": {
         "runtime": {
           "Assembly-CSharp-firstpass.dll": {
@@ -554,14 +569,6 @@
           "AK.Wwise.Unity.API.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "Unity.InputSystem/1.3.0.0": {
-        "runtime": {
-          "Unity.InputSystem.dll": {
-            "assemblyVersion": "1.3.0.0",
-            "fileVersion": "1.3.0.0"
           }
         }
       },
@@ -810,6 +817,21 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Unity.InputSystem/1.3.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.TextMeshPro/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.AssetBundleModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "UnityEngine.CoreModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -831,6 +853,26 @@
       "sha512": ""
     },
     "UnityEngine.JSONSerializeModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.UI/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.UIElementsModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.UIElementsNativeModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.UIModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -860,22 +902,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "UnityEngine.UIElementsModule/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "UnityEngine.AndroidJNIModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "UnityEngine.AccessibilityModule/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "UnityEngine.UIModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -911,11 +943,6 @@
       "sha512": ""
     },
     "UnityEngine.PhysicsModule/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "UnityEngine.AssetBundleModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1075,11 +1102,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "UnityEngine.UIElementsNativeModule/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "UnityEngine.VehiclesModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -1100,16 +1122,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "UnityEngine.UI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Unity.TextMeshPro/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Assembly-CSharp-firstpass/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -1121,11 +1133,6 @@
       "sha512": ""
     },
     "AK.Wwise.Unity.API/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Unity.InputSystem/1.3.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
