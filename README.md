@@ -17,6 +17,7 @@ https://discord.gg/pFusqNVbjN
 #### 3D Art
 - [@Bandit2710](https://www.github.com/Bandit2710)
 - [@MeowserLJC](https://www.github.com/MeowserLJC)
+- Vulpy#5715
 
 ### Contibutors
 #### 3D Art
