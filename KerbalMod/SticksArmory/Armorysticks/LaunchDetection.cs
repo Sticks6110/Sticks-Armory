@@ -17,12 +17,6 @@ namespace SticksArmory.Armorysticks
         public static async void Launched(string GUID)
         {
 
-            if(ArmorysticksMod.simulation == null)
-            {
-                Armorysticks.Logger.Log("LOADING SIMULATION");
-                ArmorysticksMod.Instance.LoadSimulation();
-            }
-
             if(IGGuid.TryParse(GUID, out IGGuid guid))
             {
                 Armorysticks.Logger.Log("SUCCESS");
@@ -30,28 +24,20 @@ namespace SticksArmory.Armorysticks
                 {
                     Armorysticks.Logger.Log("EXIST");
                     Armorysticks.Logger.Log(GUID);
-                    SimulationObjectModel simObj = ArmorysticksMod.simulation.FindSimObject(guid);
+                    SimulationObjectModel simObj = ArmorysticksMod.Instance.GetSim().FindSimObject(guid);
 
                     SimulationObjectView simulationObjectView = GameManager.Instance.Game.SpaceSimulation.ModelViewMap.FromModel(simObj);
 
                     Armorysticks.Logger.Log("LAUNCHING");
 
-                    if (simulationObjectView.Rigidbody != null && simulationObjectView.transform != null)
+                    if(simulationObjectView != null)
                     {
-
-                        Armorysticks.Logger.Log("ADDING MISSILE COMPONENT");
-                        Missile.Missile m = new Missile.Missile();
-                        m.Init(simulationObjectView.Rigidbody, simulationObjectView.transform, new List<Missile.MissileStage>(), 250, new Vector3(0, 0, -2), 1);
-                        ArmorysticksMod.Instance.LaunchedMissiles.Add(m);
-                        Armorysticks.Logger.Log("MISSILE COMPONENT ADDED");
-
+                        Missile.Missile m = simulationObjectView.gameObject.AddComponent<Missile.Missile>();
+                        m.maxSpeed = 1372f;
+                        m.operationalRange = 160;
+                        m.Launch();
                     }
-                    else
-                    {
-
-                        Armorysticks.Logger.Log("ERROR FINDING RIGIDBODY OR TRANSFORM NOT LAUNCHING MISSILE");
-
-                    }
+                    
                     
                 }
             }

@@ -41,13 +41,16 @@ namespace Armorysticks
 
         public static ArmorysticksMod Instance;
 
-        public static SpaceSimulation simulation;
-
         public override void Initialize()
         {
             Instance = this;
             SticksArmory.Armorysticks.Logger.Log("Sticks Armory Loaded");
             SticksArmory.Armorysticks.Logger.Log("LOG LOCATION: " + SpaceWarp.API.SpaceWarpManager.MODS_FULL_PATH + @"/armorysticks/log.txt");
+        }
+
+        public SpaceSimulation GetSim()
+        {
+            return base.Game.SpaceSimulation;
         }
 
         public void OnApplicationQuit()
@@ -80,11 +83,6 @@ namespace Armorysticks
             
             DecoupleMessage decoupled = (DecoupleMessage)m;
             LaunchDetection.Launched(decoupled.PartGuid);
-        }
-
-        public void LoadSimulation()
-        {
-            simulation = base.Game.SpaceSimulation;
         }
 
 
