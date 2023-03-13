@@ -9,6 +9,21 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using KSP.Api;
 using System.Collections;
+using KSP.Messages;
+using KSP.Sim.impl;
+using KSP.Sim.DeltaV;
+using KSP.Modules;
+using KSP.Sim.Definitions;
+using SticksArmory.Armorysticks;
+using I2.Loc;
+using KSP.Game;
+using KSP.Sim;
+using System.Drawing;
+using SpaceWarp.API;
+using System.Runtime.CompilerServices;
+using System;
+using SticksArmory.Armorysticks.Missile;
+using KSP.VFX;
 
 namespace Armorysticks
 {
@@ -16,36 +31,63 @@ namespace Armorysticks
     public class ArmorysticksMod : Mod
     {
 
+        public List<Missile> LaunchedMissiles = new List<Missile>();
+
         private bool uiLoaded = false;
+        private SticksGUI gui;
 
         private GameObject MenuButton;
         private GameObject MenuSettings;
 
+        public static ArmorysticksMod Instance;
+
+        public static SpaceSimulation simulation;
+
         public override void Initialize()
         {
-            Logger.Info("Sticks Armory Loaded");
+            Instance = this;
+            SticksArmory.Armorysticks.Logger.Log("Sticks Armory Loaded");
+            SticksArmory.Armorysticks.Logger.Log("LOG LOCATION: " + SpaceWarp.API.SpaceWarpManager.MODS_FULL_PATH + @"/armorysticks/log.txt");
+        }
+
+        public void OnApplicationQuit()
+        {
+
+            SticksArmory.Armorysticks.Logger.Closing();
         }
 
         public void Awake()
         {
-            CreateMainMenuItem();
+            /*GameObject g = new GameObject("WeaponGUI");
+            gui = g.AddComponent<SticksGUI>();
+            DontDestroyOnLoad(g);*/
+
+            base.Game.Messages.Subscribe<DecoupleMessage>((m) => { LaunchMissile(m); });
             //GameManager/Default Game Instance(Clone)/UI Manager(Clone)/Main Canvas/MainMenu(Clone)/MenuItemsGroup/Singleplayer/
         }
 
         public void Update()
         {
 
-            if(Input.GetKeyDown(KeyCode.O))
-            {
-                GameObject.Find("BTN-Prograde").GetComponent<Toggle>().isOn = true;
-            }
-
             if(uiLoaded == false)
             {
                 CreateMainMenuItem();
             }
         }
-        
+
+        public void LaunchMissile(MessageCenterMessage m)
+        {
+            
+            DecoupleMessage decoupled = (DecoupleMessage)m;
+            LaunchDetection.Launched(decoupled.PartGuid);
+        }
+
+        public void LoadSimulation()
+        {
+            simulation = base.Game.SpaceSimulation;
+        }
+
+
         public void CreateMainMenuItem()
         {
             if(GameObject.Find("MenuItemsGroup") is GameObject gobj)

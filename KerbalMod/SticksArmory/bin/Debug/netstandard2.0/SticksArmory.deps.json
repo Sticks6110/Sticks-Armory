@@ -12,15 +12,17 @@
           "NETStandard.Library": "2.0.3",
           "Assembly-CSharp": "0.0.0.0",
           "NewtonSoft.Json": "12.0.0.0",
-          "SpaceWarp": "1.0.0.0",
+          "SpaceWarp": "0.3.0.0",
           "Unity.InputSystem": "1.3.0.0",
           "Unity.TextMeshPro": "0.0.0.0",
           "UnityEngine.AssetBundleModule": "0.0.0.0",
           "UnityEngine.CoreModule": "0.0.0.0",
           "UnityEngine": "0.0.0.0",
+          "UnityEngine.IMGUIModule": "0.0.0.0",
           "UnityEngine.InputLegacyModule": "0.0.0.0",
           "UnityEngine.InputModule": "0.0.0.0",
           "UnityEngine.JSONSerializeModule": "0.0.0.0",
+          "UnityEngine.PhysicsModule": "0.0.0.0",
           "UnityEngine.UI": "1.0.0.0",
           "UnityEngine.UIElementsModule": "0.0.0.0",
           "UnityEngine.UIElementsNativeModule": "0.0.0.0",
@@ -52,11 +54,11 @@
           }
         }
       },
-      "SpaceWarp/1.0.0.0": {
+      "SpaceWarp/0.3.0.0": {
         "runtime": {
           "SpaceWarp.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "0.3.0.0",
+            "fileVersion": "0.3.0.0"
           }
         }
       },
@@ -100,6 +102,14 @@
           }
         }
       },
+      "UnityEngine.IMGUIModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.IMGUIModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "UnityEngine.InputLegacyModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.InputLegacyModule.dll": {
@@ -119,6 +129,14 @@
       "UnityEngine.JSONSerializeModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.JSONSerializeModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.PhysicsModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.PhysicsModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -151,14 +169,6 @@
       "UnityEngine.UIModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.UIModule.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "UnityEngine.IMGUIModule/0.0.0.0": {
-        "runtime": {
-          "UnityEngine.IMGUIModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -255,14 +265,6 @@
       "UnityEngine.AnimationModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.AnimationModule.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "UnityEngine.PhysicsModule/0.0.0.0": {
-        "runtime": {
-          "UnityEngine.PhysicsModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -812,7 +814,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SpaceWarp/1.0.0.0": {
+    "SpaceWarp/0.3.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -842,6 +844,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "UnityEngine.IMGUIModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "UnityEngine.InputLegacyModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -853,6 +860,11 @@
       "sha512": ""
     },
     "UnityEngine.JSONSerializeModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.PhysicsModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -873,11 +885,6 @@
       "sha512": ""
     },
     "UnityEngine.UIModule/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "UnityEngine.IMGUIModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -938,11 +945,6 @@
       "sha512": ""
     },
     "UnityEngine.AnimationModule/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "UnityEngine.PhysicsModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

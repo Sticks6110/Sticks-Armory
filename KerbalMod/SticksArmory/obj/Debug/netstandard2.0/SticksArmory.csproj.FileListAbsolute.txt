@@ -104,10 +104,8 @@ C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\Ke
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\SticksArmory.pdb
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\Assembly-CSharp.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\NewtonSoft.Json.dll
-C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\SpaceWarp.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.CoreModule.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.dll
-C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.IMGUIModule.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.DSPGraphModule.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.AudioModule.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.UnityCurlModule.dll
@@ -122,7 +120,6 @@ C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\Ke
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.PerformanceReportingModule.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.Physics2DModule.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.AnimationModule.dll
-C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.PhysicsModule.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.SharedInternalsModule.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.TextRenderingModule.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\UnityEngine.ClothModule.dll
