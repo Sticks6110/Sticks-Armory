@@ -44,6 +44,7 @@ namespace Armorysticks
         public override void Initialize()
         {
             Instance = this;
+            JSONSave.LoadAllParts();
             SticksArmory.Armorysticks.Logger.Log("Sticks Armory Loaded");
             SticksArmory.Armorysticks.Logger.Log("LOG LOCATION: " + SpaceWarp.API.SpaceWarpManager.MODS_FULL_PATH + @"/armorysticks/log.txt");
         }

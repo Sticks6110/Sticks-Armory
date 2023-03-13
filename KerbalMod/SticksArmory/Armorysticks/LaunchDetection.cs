@@ -26,15 +26,19 @@ namespace SticksArmory.Armorysticks
                     Armorysticks.Logger.Log(GUID);
                     SimulationObjectModel simObj = ArmorysticksMod.Instance.GetSim().FindSimObject(guid);
 
+                    if (!JSONSave.Launchables.ContainsKey(simObj.Name)) return;
+
                     SimulationObjectView simulationObjectView = GameManager.Instance.Game.SpaceSimulation.ModelViewMap.FromModel(simObj);
 
                     Armorysticks.Logger.Log("LAUNCHING");
 
+                    JSONSaveData d = JSONSave.Launchables[simObj.Name];
+
                     if(simulationObjectView != null)
                     {
                         Missile.Missile m = simulationObjectView.gameObject.AddComponent<Missile.Missile>();
-                        m.maxSpeed = 1372f;
-                        m.operationalRange = 160;
+                        m.maxSpeed = d.MaxSpeed;
+                        m.operationalRange = d.OperationalRange;
                         m.Launch();
                     }
                     
