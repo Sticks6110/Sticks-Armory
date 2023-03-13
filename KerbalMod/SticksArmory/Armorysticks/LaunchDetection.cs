@@ -33,17 +33,6 @@ namespace SticksArmory.Armorysticks
                     SimulationObjectModel simObj = ArmorysticksMod.simulation.FindSimObject(guid);
 
                     SimulationObjectView simulationObjectView = GameManager.Instance.Game.SpaceSimulation.ModelViewMap.FromModel(simObj);
-                    if(simulationObjectView == null)
-                    {
-
-                        while (simulationObjectView == null)
-                        {
-                            simulationObjectView = GameManager.Instance.Game.SpaceSimulation.ModelViewMap.FromModel(simObj);
-                            Armorysticks.Logger.Log("WAITING TO EXIST");
-                            await Task.Delay(25);
-                        }
-
-                    }
 
                     Armorysticks.Logger.Log("LAUNCHING");
 
