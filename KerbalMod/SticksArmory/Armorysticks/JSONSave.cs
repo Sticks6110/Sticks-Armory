@@ -22,9 +22,10 @@ namespace SticksArmory.Armorysticks
     {
 
         public static Dictionary<string, JSONSaveData> Launchables = new Dictionary<string, JSONSaveData>();
-
+        
         public static void LoadAllParts()
         {
+
             DirectoryInfo folder = new DirectoryInfo(SpaceWarp.API.SpaceWarpManager.MODS_FULL_PATH + @"/armorysticks/weapons/");
 
             foreach (string file in Directory.GetFiles(folder.FullName, "*.json"))

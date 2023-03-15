@@ -23,23 +23,22 @@
   </assembly>
   <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.Rigidbody" preserve="all" />
-    <type fullname="UnityEngine.MeshCollider" preserve="all" />
     <type fullname="UnityEngine.BoxCollider" preserve="all" />
     <type fullname="UnityEngine.CapsuleCollider" preserve="all" />
   </assembly>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="KSP.CorePartData" preserve="all" />
     <type fullname="KSP.Sim.impl.DestructiblePart" preserve="all" />
+    <type fullname="KSPPartAudio" preserve="all" />
     <type fullname="KSP.Modules.Module_Color" preserve="all" />
     <type fullname="KSP.Modules.Module_Decouple" preserve="all" />
     <type fullname="KSP.Modules.Module_Drag" preserve="all" />
     <type fullname="KSP.Modules.Module_ToggleCrossfeed" preserve="all" />
-    <type fullname="KSP.Sim.impl.SeperationVFXController" preserve="all" />
-    <type fullname="KSPPartAudio" preserve="all" />
     <type fullname="KSP.Game.PartsManagerCore/SerializedPartModuleDisplayVisuals" preserve="nothing" serialized="true" />
     <type fullname="KSP.Modules.Data_Color" preserve="nothing" serialized="true" />
     <type fullname="KSP.Modules.Data_Decouple" preserve="nothing" serialized="true" />
     <type fullname="KSP.Modules.Data_Drag" preserve="nothing" serialized="true" />
+    <type fullname="KSP.Modules.Data_ToggleCrossFeed" preserve="nothing" serialized="true" />
     <type fullname="KSP.OAB.MirrorTechnique" preserve="nothing" serialized="true" />
     <type fullname="KSP.OAB.OABEditorPartCategory" preserve="nothing" serialized="true" />
     <type fullname="KSP.OAB.OABOrientation" preserve="nothing" serialized="true" />
@@ -52,11 +51,12 @@
     <type fullname="KSP.Sim.Definitions.SerializedPartModule" preserve="nothing" serialized="true" />
     <type fullname="KSP.Sim.Definitions.SerializedResourceInfo" preserve="nothing" serialized="true" />
     <type fullname="KSP.Sim.ResourceSystem.ResourceFlowRequestHandle" preserve="nothing" serialized="true" />
-    <type fullname="KSP.Sim.impl.SeperationVFXController/atmoVacNamePair" preserve="nothing" serialized="true" />
     <type fullname="KSPPartAudio/Sounds" preserve="nothing" serialized="true" />
     <type fullname="Vector3d" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="AK.Wwise.Unity.MonoBehaviour, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="AkGameObj" preserve="all" />
+    <type fullname="AkGameObjListenerList" preserve="nothing" serialized="true" />
+    <type fullname="AkGameObjPositionOffsetData" preserve="nothing" serialized="true" />
   </assembly>
 </linker>

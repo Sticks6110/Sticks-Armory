@@ -1,0 +1,5 @@
+Key,Type,Description,English
+Parts/Title/aim_120_amram,Text,,"AIM-120 AMRAAM"
+Parts/Subtitle/aim_120_amram,Text,,"Air-to-Air"
+Parts/Manufacturer/aim_120_amram,Text,,"Sticks Armory Developers"
+Parts/Description/aim_120_amram,Text,,"Type: Air-to-Air\nGuidance: Active Radar Homing\nWarhead: High explosive blast-fragmentation\nDetonation: Proximity / Impact\nOrigin: United States"
