@@ -12,7 +12,7 @@ The current release date of this mod is unknown.
 
 ## Developers
 #### Coding
-- [@BeastBomber23](https://www.github.com/BeastBomber23)
+- [@Sticks](https://www.github.com/Sticks6110)
 - [@MeowserLJC](https://www.github.com/MeowserLJC)
 #### Sound
 - [@keever50](https://www.github.com/keever50)
