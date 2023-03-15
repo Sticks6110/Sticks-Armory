@@ -7,6 +7,8 @@ A mod for Kerbal Space Program 2 thats adds in both modern and old weapons for c
 #### Discord
 https://discord.gg/pFusqNVbjN
 
+## Release
+The current release date of this mod is unknown.
 
 ## Developers
 #### Coding
@@ -17,6 +19,7 @@ https://discord.gg/pFusqNVbjN
 #### 3D Art
 - [@Bandit2710](https://www.github.com/Bandit2710)
 - [@MeowserLJC](https://www.github.com/MeowserLJC)
+- Vulpy#5715
 
 ### Contibutors
 #### 3D Art
