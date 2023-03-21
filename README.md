@@ -24,3 +24,4 @@ The current release date of this mod is unknown.
 ### Contibutors
 #### 3D Art
 - [@IsaQuest](https://forum.kerbalspaceprogram.com/index.php?/profile/207767-isaquest/)
+- [@maxBRRRRRRRRRRRRRRRT](https://github.com/hex50core)
