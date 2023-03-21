@@ -2,5 +2,24 @@
   "PartType": "missile",
   "PartId": "aim_120_amram",
   "MaxSpeed": 1372,
-  "OperationalRange": 160
+  "OperationalRange": 160,
+  "CustomAssetBundle": "na",
+  "ExplosionEffect": "Explosion3D_1,Explosion3D_2,Explosion3D_3",
+  "ExplosionRadius": 10,
+  "ExplosionEffectSize": 8,
+  "ExplosionDamage": 100,
+  "ExplosionArmorPenetration": 2,
+  "AudioBase": "Hellfire_base",
+  "AudioClose": "Hellfire_close_loop_00",
+  "AudioFar": "Hellfire_distant_loop_00",
+  "AudioFireClose": "Hellfire_fire_close_00,Hellfire_fire_close_01",
+  "AudioFireFar": "Hellfire_fire_distant,Hellfire_fire_distant_01,Hellfire_fire_distant_02",
+  "AudioFireInternal": "Hellfire_fire_internal_00",
+  "AudioExplosion": "medium_explosion_close_00",
+  "Shrapnell": true,
+  "ShrapnellCount": 100,
+  "ShrapnellMaxAngle": 180,
+  "ShrapnellDamage": 20,
+  "ShrapnellArmorPenetration": 3
+
 }
