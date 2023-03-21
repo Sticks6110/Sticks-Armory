@@ -1,4 +1,5 @@
-﻿using SpaceWarp.API;
+﻿using SpaceWarp;
+using SpaceWarp.API;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ namespace SticksArmory.Armorysticks
     public class SticksGUI : MonoBehaviour
     {
 
-        private Rect rect = new Rect((250 * 0.85f) - (Screen.width / 2), (Screen.height / 2) - (700 / 2), 0, 0);
+        /*private Rect rect = new Rect((250 * 0.85f) - (Screen.width / 2), (Screen.height / 2) - (700 / 2), 0, 0);
 
         public void OnGUI()
         {
@@ -58,7 +59,7 @@ namespace SticksArmory.Armorysticks
 
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
 
-        }
+        }*/
 
     }
 }

@@ -1,12 +1,16 @@
 ﻿using Armorysticks;
 using AwesomeTechnologies.Utility;
+using KSP.Game;
+using KSP.Rendering.Planets;
 using KSP.Sim;
 using KSP.Sim.impl;
+using KSP.VFX;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using static KSP.Rendering.Planets.PQJob;
 
 namespace SticksArmory.Armorysticks.Missile
 {
@@ -43,6 +47,10 @@ namespace SticksArmory.Armorysticks.Missile
         public float maxSpeed; //           m/s
         public float operationalRange; //   km
 
+        public PartBehavior parent;
+        public AudioSource audio;
+
+        public WeaponJSONSaveData data;
 
         //base.Game.GraphicsManager.ContextualFxSystem.TriggerEvent(new FXExplosionContextualEvent(base.Game.GraphicsManager.ContextualFxSystem, eventParams, partContextData));
 
@@ -50,7 +58,36 @@ namespace SticksArmory.Armorysticks.Missile
         private float secondsTillDry;
         private float secondsSinceLaunch;
 
+        private Camera cam;
+
+        private RenderTexture renderTexture;
+
+        private Rect rect = new Rect((Screen.width / 2), (Screen.height / 2), 0, 0);
+
         private bool launched;
+
+        public void OnGUI()
+        {
+            if(!launched) return;
+            GUI.skin = SpaceWarp.API.UI.Skins.ConsoleSkin;
+            rect = GUILayout.Window(GUIUtility.GetControlID(FocusType.Passive), rect, PopulateWindow, parent.GetDisplayName(), GUILayout.Height(270), GUILayout.Width(250));
+
+        }
+
+        private void PopulateWindow(int windowID)
+        {
+
+            GUILayout.BeginVertical();
+            GUILayout.BeginHorizontal();
+
+            GUI.DrawTexture(new Rect(10, 30, 230, 230), renderTexture);
+
+            GUILayout.EndHorizontal();
+            GUILayout.EndVertical();
+
+            GUI.DragWindow(new Rect(0, 0, Screen.width, Screen.height));
+
+        }
 
         public void Update()
         {
@@ -59,12 +96,35 @@ namespace SticksArmory.Armorysticks.Missile
             secondsSinceLaunch += Time.deltaTime;
         }
 
+        public void Explode(Type t, ObjectComponent c)
+        {
+            string[] effects = data.ExplosionEffect.Split(char.Parse(","));
+            string efct = effects[UnityEngine.Random.Range(0, effects.Length - 1)];
+            GameObject prefab = ArmorysticksMod.Instance.effects.LoadAsset<GameObject>(efct);
+            Instantiate(prefab, transform.position, transform.rotation);
+
+            Armorysticks.Logger.Log("EXPLOSION");
+            Destroy(this);
+            
+        }
+
         public void Launch()
         {
             rb = GetComponent<RigidbodyBehavior>();
             secondsTillDry = operationalRange / (maxSpeed / 1000); //Will change later for rockets to accelerate linearly or exponentially but for now they stay at a constant speed
 
+            GameObject g = gameObject.GetChild("Camera");
+            g.SetActive(true);
 
+            Camera cam = g.GetComponent<Camera>();
+            cam.forceIntoRenderTexture = true;
+
+            renderTexture = new RenderTexture(512, 512, 16, RenderTextureFormat.ARGB32);
+            renderTexture.Create();
+            
+            cam.targetTexture = renderTexture;
+
+            cam.gameObject.SetActive(true);
 
             launched = true;
         }

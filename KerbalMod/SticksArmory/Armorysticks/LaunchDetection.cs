@@ -32,13 +32,19 @@ namespace SticksArmory.Armorysticks
 
                     Armorysticks.Logger.Log("LAUNCHING");
 
-                    JSONSaveData d = JSONSave.Launchables[simObj.Name];
+                    WeaponJSONSaveData d = JSONSave.Launchables[simObj.Name];
 
                     if(simulationObjectView != null)
                     {
+                        AudioSource a = simulationObjectView.gameObject.AddComponent<AudioSource>();
                         Missile.Missile m = simulationObjectView.gameObject.AddComponent<Missile.Missile>();
                         m.maxSpeed = d.MaxSpeed;
                         m.operationalRange = d.OperationalRange;
+                        m.parent = simulationObjectView.Part;
+                        m.audio = a;
+                        m.data = d;
+                        simulationObjectView.Model.onComponentRemoved += m.Explode;
+
                         m.Launch();
                     }
                     

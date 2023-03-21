@@ -11,13 +11,16 @@
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "Assembly-CSharp": "0.0.0.0",
+          "BepInEx": "5.4.21.0",
           "NewtonSoft.Json": "12.0.0.0",
-          "SpaceWarp": "0.3.0.0",
+          "SpaceWarp": "1.0.1.0",
           "Unity.InputSystem": "1.3.0.0",
           "Unity.TextMeshPro": "0.0.0.0",
           "UnityEngine.AssetBundleModule": "0.0.0.0",
+          "UnityEngine.AudioModule": "0.0.0.0",
           "UnityEngine.CoreModule": "0.0.0.0",
           "UnityEngine": "0.0.0.0",
+          "UnityEngine.ImageConversionModule": "0.0.0.0",
           "UnityEngine.IMGUIModule": "0.0.0.0",
           "UnityEngine.InputLegacyModule": "0.0.0.0",
           "UnityEngine.InputModule": "0.0.0.0",
@@ -46,6 +49,14 @@
           }
         }
       },
+      "BepInEx/5.4.21.0": {
+        "runtime": {
+          "BepInEx.dll": {
+            "assemblyVersion": "5.4.21.0",
+            "fileVersion": "5.4.21.0"
+          }
+        }
+      },
       "NewtonSoft.Json/12.0.0.0": {
         "runtime": {
           "NewtonSoft.Json.dll": {
@@ -54,11 +65,11 @@
           }
         }
       },
-      "SpaceWarp/0.3.0.0": {
+      "SpaceWarp/1.0.1.0": {
         "runtime": {
           "SpaceWarp.dll": {
-            "assemblyVersion": "0.3.0.0",
-            "fileVersion": "0.3.0.0"
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
           }
         }
       },
@@ -86,6 +97,14 @@
           }
         }
       },
+      "UnityEngine.AudioModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.AudioModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "UnityEngine.CoreModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.CoreModule.dll": {
@@ -97,6 +116,14 @@
       "UnityEngine/0.0.0.0": {
         "runtime": {
           "UnityEngine.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.ImageConversionModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.ImageConversionModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -177,14 +204,6 @@
       "UnityEngine.DSPGraphModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.DSPGraphModule.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "UnityEngine.AudioModule/0.0.0.0": {
-        "runtime": {
-          "UnityEngine.AudioModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -361,14 +380,6 @@
       "UnityEngine.GridModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.GridModule.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "UnityEngine.ImageConversionModule/0.0.0.0": {
-        "runtime": {
-          "UnityEngine.ImageConversionModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -766,6 +777,14 @@
           }
         }
       },
+      "MonoMod.RuntimeDetour/22.1.29.1": {
+        "runtime": {
+          "MonoMod.RuntimeDetour.dll": {
+            "assemblyVersion": "22.1.29.1",
+            "fileVersion": "22.1.29.1"
+          }
+        }
+      },
       "System.Security/4.0.0.0": {
         "runtime": {
           "System.Security.dll": {
@@ -809,12 +828,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "BepInEx/5.4.21.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "NewtonSoft.Json/12.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "SpaceWarp/0.3.0.0": {
+    "SpaceWarp/1.0.1.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -834,12 +858,22 @@
       "serviceable": false,
       "sha512": ""
     },
+    "UnityEngine.AudioModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "UnityEngine.CoreModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "UnityEngine/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.ImageConversionModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -890,11 +924,6 @@
       "sha512": ""
     },
     "UnityEngine.DSPGraphModule/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "UnityEngine.AudioModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1005,11 +1034,6 @@
       "sha512": ""
     },
     "UnityEngine.GridModule/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "UnityEngine.ImageConversionModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1255,6 +1279,11 @@
       "sha512": ""
     },
     "System.Configuration/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MonoMod.RuntimeDetour/22.1.29.1": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

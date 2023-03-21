@@ -1,35 +1,27 @@
-using SpaceWarp.API.Mods;
-using System.IO;
 using UnityEngine;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using UnityEngine.Rendering;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using KSP.Api;
-using System.Collections;
 using KSP.Messages;
 using KSP.Sim.impl;
-using KSP.Sim.DeltaV;
-using KSP.Modules;
-using KSP.Sim.Definitions;
 using SticksArmory.Armorysticks;
-using I2.Loc;
-using KSP.Game;
-using KSP.Sim;
-using System.Drawing;
-using SpaceWarp.API;
-using System.Runtime.CompilerServices;
-using System;
 using SticksArmory.Armorysticks.Missile;
 using KSP.VFX;
+using KSP.Rendering.Planets;
+using BepInEx;
+using SpaceWarp;
+using SpaceWarp.API.Mods;
+using KSP.Modding;
+using KSP.OAB;
 
 namespace Armorysticks
 {
-    [MainMod]
-    public class ArmorysticksMod : Mod
+    [BepInPlugin(ModGuid, ModName, ModVer)]
+    public class ArmorysticksMod : BaseSpaceWarpPlugin
     {
+        
+        public const string ModGuid = "com.github.sticks.sticksarmory";
+        public const string ModName = "Sticks Armory";
+        public const string ModVer = MyPluginInfo.PLUGIN_VERSION;
 
         public List<Missile> LaunchedMissiles = new List<Missile>();
 
@@ -41,17 +33,36 @@ namespace Armorysticks
 
         public static ArmorysticksMod Instance;
 
-        public override void Initialize()
+        public AssetBundle effects;
+        public AssetBundle audio;
+
+        public static string Path { get; private set; }
+
+        public override void OnPreInitialized()
         {
+            Path = PluginFolderPath;
+        }
+
+        public override void OnInitialized()
+        {
+
             Instance = this;
             JSONSave.LoadAllParts();
+            effects = AssetBundleLoader.LoadBundle("effects");
+            audio = AssetBundleLoader.LoadBundle("audio");
+            Game.Messages.Subscribe<DecoupleMessage>((m) => { LaunchMissile(m); });
             SticksArmory.Armorysticks.Logger.Log("Sticks Armory Loaded");
-            SticksArmory.Armorysticks.Logger.Log("LOG LOCATION: " + SpaceWarp.API.SpaceWarpManager.MODS_FULL_PATH + @"/armorysticks/log.txt");
+            SticksArmory.Armorysticks.Logger.Log("LOG LOCATION: " + BepInEx.Paths.PluginPath + @"/armorysticks/log.txt");
         }
 
         public SpaceSimulation GetSim()
         {
-            return base.Game.SpaceSimulation;
+            return Game.SpaceSimulation;
+        }
+
+        public UniverseModel GetUniverse()
+        {
+            return Game.UniverseModel;
         }
 
         public void OnApplicationQuit()
@@ -60,15 +71,22 @@ namespace Armorysticks
             SticksArmory.Armorysticks.Logger.Closing();
         }
 
-        public void Awake()
+        public void Explode(FXExplosionContextualEvent explosion)
         {
-            /*GameObject g = new GameObject("WeaponGUI");
-            gui = g.AddComponent<SticksGUI>();
-            DontDestroyOnLoad(g);*/
-
-            base.Game.Messages.Subscribe<DecoupleMessage>((m) => { LaunchMissile(m); });
-            //GameManager/Default Game Instance(Clone)/UI Manager(Clone)/Main Canvas/MainMenu(Clone)/MenuItemsGroup/Singleplayer/
+            Game.GraphicsManager.ContextualFxSystem.TriggerEvent(explosion);
         }
+
+        public ContextualFxSystem GetFxSystem()
+        {
+            return Game.GraphicsManager.ContextualFxSystem;
+        }
+
+        public FXPartContextData GetPartContextData(PartBehavior p, PQS pqs)
+        {
+            return Game.GraphicsManager.ContextualFxSystem.GetPartContextData(p, pqs);
+        }
+
+        private int ope = 0;
 
         public void Update()
         {

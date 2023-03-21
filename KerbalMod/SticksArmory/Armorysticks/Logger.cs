@@ -20,7 +20,7 @@ namespace SticksArmory.Armorysticks
         public static void Closing()
         {
             Log("Saving Log");
-            System.IO.File.WriteAllText(SpaceWarp.API.SpaceWarpManager.MODS_FULL_PATH + @"\armorysticks\log.txt", String.Join("\n", stack));
+            System.IO.File.WriteAllText(BepInEx.Paths.PluginPath + @"\armorysticks\log.txt", String.Join("\n", stack));
         }
 
     }
