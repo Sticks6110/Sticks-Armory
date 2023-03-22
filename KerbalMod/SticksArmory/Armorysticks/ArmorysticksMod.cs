@@ -119,7 +119,7 @@ namespace Armorysticks
                 Destroy(btn.GetComponentInChildren<UIAction_Void_Button>());
                 btn.GetComponentInChildren<UIAction_Void_Button>().button.onClick.AddListener(SettingsMenuOpened);
 
-                MenuSettings = new GameObject("SticksArsenalSettigns");
+                MenuSettings = new GameObject("SticksArmorylSettigns");
                 MenuSettings.transform.parent = GameObject.Find("Main Canvas").transform;
                 MenuSettings.AddComponent<CanvasRenderer>();
                 MenuSettings.AddComponent<Image>().color = new Color32(42, 42, 42, 255);
@@ -136,7 +136,7 @@ namespace Armorysticks
                 headerText.transform.parent = headerHolder.transform;
                 headerText.AddComponent<CanvasRenderer>();
                 TMP_Text htext = (TMP_Text) CopyComponent(btnText, headerText);
-                htext.text = "Sticks Arsenal";
+                htext.text = "Sticks Armory";
                 htext.fontSize = 48f;
                 htext.horizontalAlignment = TMPro.HorizontalAlignmentOptions.Center;
                 headerText.transform.localScale = new Vector3(0.12f, 2, 0);

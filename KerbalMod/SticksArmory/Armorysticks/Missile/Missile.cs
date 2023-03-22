@@ -48,9 +48,14 @@ namespace SticksArmory.Armorysticks.Missile
         public float operationalRange; //   km
 
         public PartBehavior parent;
+        public SimulationObjectModel simobj;
+        public SimulationObjectView simview;
         public AudioSource audio;
 
         public WeaponJSONSaveData data;
+
+        private AudioSource audioSource;
+        private AudioClip launchSound;
 
         //base.Game.GraphicsManager.ContextualFxSystem.TriggerEvent(new FXExplosionContextualEvent(base.Game.GraphicsManager.ContextualFxSystem, eventParams, partContextData));
 
@@ -65,6 +70,8 @@ namespace SticksArmory.Armorysticks.Missile
         private Rect rect = new Rect((Screen.width / 2), (Screen.height / 2), 0, 0);
 
         private bool launched;
+
+        private Vector3 up;
 
         public void OnGUI()
         {
@@ -92,7 +99,7 @@ namespace SticksArmory.Armorysticks.Missile
         public void Update()
         {
             if (!launched) return;
-
+            up = (simview.CelestialBody.transform.position - transform.position).normalized;
             secondsSinceLaunch += Time.deltaTime;
         }
 
@@ -101,7 +108,10 @@ namespace SticksArmory.Armorysticks.Missile
             string[] effects = data.ExplosionEffect.Split(char.Parse(","));
             string efct = effects[UnityEngine.Random.Range(0, effects.Length - 1)];
             GameObject prefab = ArmorysticksMod.Instance.effects.LoadAsset<GameObject>(efct);
-            Instantiate(prefab, transform.position, transform.rotation);
+            GameObject explo = Instantiate(prefab, transform.position, transform.rotation);
+            explo.transform.localScale = new Vector3(data.ExplosionEffectSize, data.ExplosionEffectSize, data.ExplosionEffectSize);
+            explo.transform.localRotation = Quaternion.Euler(0, 260, 90);
+            
 
             Armorysticks.Logger.Log("EXPLOSION");
             Destroy(this);
@@ -125,6 +135,8 @@ namespace SticksArmory.Armorysticks.Missile
             cam.targetTexture = renderTexture;
 
             cam.gameObject.SetActive(true);
+
+            launchSound = (AudioClip) ArmorysticksMod.Instance.audio.LoadAsset(data.AudioFireClose);
 
             launched = true;
         }

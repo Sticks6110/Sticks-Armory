@@ -1,4 +1,5 @@
-﻿using KSP.Sim;
+﻿
+using KSP.Sim;
 using KSP.Sim.impl;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace SticksArmory.Armorysticks
                 Armorysticks.Logger.Log("SUCCESS");
                 if (guid != default(IGGuid))
                 {
+
                     Armorysticks.Logger.Log("EXIST");
                     Armorysticks.Logger.Log(GUID);
                     SimulationObjectModel simObj = ArmorysticksMod.Instance.GetSim().FindSimObject(guid);
@@ -41,6 +43,8 @@ namespace SticksArmory.Armorysticks
                         m.maxSpeed = d.MaxSpeed;
                         m.operationalRange = d.OperationalRange;
                         m.parent = simulationObjectView.Part;
+                        m.simobj = simObj;
+                        m.simview = simulationObjectView;
                         m.audio = a;
                         m.data = d;
                         simulationObjectView.Model.onComponentRemoved += m.Explode;

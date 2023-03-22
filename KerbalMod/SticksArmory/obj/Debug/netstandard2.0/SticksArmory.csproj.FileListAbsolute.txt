@@ -198,3 +198,4 @@ C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\Ke
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\MonoMod.RuntimeDetour.dll
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\BepInEx.xml
 C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\MonoMod.RuntimeDetour.xml
+C:\Users\beast\Desktop\Games\BigAceEntertainment\SticksArsenal\Sticks-Arsenal\KerbalMod\SticksArmory\bin\Debug\netstandard2.0\Ak.Wwise.Api.WAAPI.dll

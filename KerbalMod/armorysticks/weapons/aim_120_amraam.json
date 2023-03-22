@@ -6,7 +6,7 @@
   "CustomAssetBundle": "na",
   "ExplosionEffect": "Explosion3D_1,Explosion3D_2,Explosion3D_3",
   "ExplosionRadius": 10,
-  "ExplosionEffectSize": 8,
+  "ExplosionEffectSize": 1,
   "ExplosionDamage": 100,
   "ExplosionArmorPenetration": 2,
   "AudioBase": "Hellfire_base",
