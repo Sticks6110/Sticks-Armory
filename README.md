@@ -25,3 +25,5 @@ The current release date of this mod is unknown.
 #### 3D Art
 - [@IsaQuest](https://forum.kerbalspaceprogram.com/index.php?/profile/207767-isaquest/)
 - [@maxBRRRRRRRRRRRRRRRT](https://github.com/hex50core)
+#### Helping
+- [@CrtfdLvrCosta (LuxStice)](https://github.com/LuxStice)
