@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "BepInEx.AssemblyPublicizer.MSBuild/0.4.0": {
+        "type": "package",
+        "contentFiles": {
+          "contentFiles/cs/any/IgnoresAccessChecksToAttribute.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          }
+        },
+        "build": {
+          "build/BepInEx.AssemblyPublicizer.MSBuild.props": {}
+        }
+      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -29,6 +42,31 @@
     }
   },
   "libraries": {
+    "BepInEx.AssemblyPublicizer.MSBuild/0.4.0": {
+      "sha512": "kD9iPQnCcOAS68C7lyWxMoxMcxNgZdd4xdraRp8YHf5xCuHs5UzYjqHxER5/v81NEoGs9QEiz6/NdvFPTbDZqg==",
+      "type": "package",
+      "path": "bepinex.assemblypublicizer.msbuild/0.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bepinex.assemblypublicizer.msbuild.0.4.0.nupkg.sha512",
+        "bepinex.assemblypublicizer.msbuild.nuspec",
+        "build/BepInEx.AssemblyPublicizer.MSBuild.props",
+        "contentFiles/cs/any/IgnoresAccessChecksToAttribute.cs",
+        "lib/net472/AsmResolver.DotNet.dll",
+        "lib/net472/AsmResolver.PE.File.dll",
+        "lib/net472/AsmResolver.PE.dll",
+        "lib/net472/AsmResolver.dll",
+        "lib/net472/BepInEx.AssemblyPublicizer.MSBuild.dll",
+        "lib/net472/BepInEx.AssemblyPublicizer.dll",
+        "lib/netstandard2.1/AsmResolver.DotNet.dll",
+        "lib/netstandard2.1/AsmResolver.PE.File.dll",
+        "lib/netstandard2.1/AsmResolver.PE.dll",
+        "lib/netstandard2.1/AsmResolver.dll",
+        "lib/netstandard2.1/BepInEx.AssemblyPublicizer.MSBuild.dll",
+        "lib/netstandard2.1/BepInEx.AssemblyPublicizer.dll"
+      ]
+    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
@@ -176,6 +214,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "BepInEx.AssemblyPublicizer.MSBuild >= 0.4.0",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -200,7 +239,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.bepinex.dev/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
@@ -218,6 +258,12 @@
       "netstandard2.0": {
         "targetAlias": "netstandard2.0",
         "dependencies": {
+          "BepInEx.AssemblyPublicizer.MSBuild": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[0.4.0, )"
+          },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",

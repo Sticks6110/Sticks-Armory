@@ -73,5 +73,22 @@ namespace SticksArmory.Armorysticks
             }
 
         }
+
+        public static WeaponJSONSaveData LoadSpecificPart(string jsonId)
+        {
+            try
+            {
+                string dir = BepInEx.Paths.PluginPath + @"/armorysticks/weapons/" + jsonId + ".json";
+
+                string text = File.ReadAllText(dir);
+                WeaponJSONSaveData data = JsonUtility.FromJson<WeaponJSONSaveData>(text);
+                return data;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                return null;
+            }
+        }
     }
 }

@@ -10,8 +10,11 @@ using KSP.Rendering.Planets;
 using BepInEx;
 using SpaceWarp;
 using SpaceWarp.API.Mods;
-using KSP.Modding;
+using SticksArmory.Armorysticks.FXEvents;
+using HarmonyLib;
 using KSP.OAB;
+using SticksArmory.Patch;
+using SticksArmory.Modules;
 
 namespace Armorysticks
 {
@@ -23,10 +26,7 @@ namespace Armorysticks
         public const string ModName = "Sticks Armory";
         public const string ModVer = MyPluginInfo.PLUGIN_VERSION;
 
-        public List<Missile> LaunchedMissiles = new List<Missile>();
-
         private bool uiLoaded = false;
-        private SticksGUI gui;
 
         private GameObject MenuButton;
         private GameObject MenuSettings;
@@ -41,6 +41,11 @@ namespace Armorysticks
         public override void OnPreInitialized()
         {
             Path = PluginFolderPath;
+
+            SticksArmory.Armorysticks.Logger.Log("Patching");
+
+            Harmony.CreateAndPatchAll(typeof(ArmorysticksMod).Assembly);
+
         }
 
         public override void OnInitialized()
@@ -50,14 +55,38 @@ namespace Armorysticks
             JSONSave.LoadAllParts();
             effects = AssetBundleLoader.LoadBundle("effects");
             audio = AssetBundleLoader.LoadBundle("audio");
-            Game.Messages.Subscribe<DecoupleMessage>((m) => { LaunchMissile(m); });
             SticksArmory.Armorysticks.Logger.Log("Sticks Armory Loaded");
             SticksArmory.Armorysticks.Logger.Log("LOG LOCATION: " + BepInEx.Paths.PluginPath + @"/armorysticks/log.txt");
+
+            Game.Messages.Subscribe<PartCrashedMessage>(PartCrashed);
+
+        }
+
+        public void PartCrashed(MessageCenterMessage m)
+        {
+
+            PartCrashedMessage crash = (PartCrashedMessage)m;
+
+
+
+            //crash.PartBehavior.GetComponent<Module_Missile>().Explode();
+
         }
 
         public SpaceSimulation GetSim()
         {
             return Game.SpaceSimulation;
+        }
+
+        public FXPartContextData GetFXPartContextData(PartBehavior b, PQS p)
+        {
+            return Game.GraphicsManager.ContextualFxSystem.GetPartContextData(b, p);
+        }
+
+        public void SticksArmoryFXInstance(FXPartContextData fxPartData, FXContextualEventParams param, GameObject effect, float scale)
+        {
+
+            Game.GraphicsManager.ContextualFxSystem.TriggerEvent(new FXSticksExplosionEvent(Game.GraphicsManager.ContextualFxSystem, param, fxPartData, effect, param, scale));
         }
 
         public UniverseModel GetUniverse()
@@ -67,7 +96,6 @@ namespace Armorysticks
 
         public void OnApplicationQuit()
         {
-
             SticksArmory.Armorysticks.Logger.Closing();
         }
 
@@ -96,14 +124,6 @@ namespace Armorysticks
                 CreateMainMenuItem();
             }
         }
-
-        public void LaunchMissile(MessageCenterMessage m)
-        {
-            
-            DecoupleMessage decoupled = (DecoupleMessage)m;
-            LaunchDetection.Launched(decoupled.PartGuid);
-        }
-
 
         public void CreateMainMenuItem()
         {
