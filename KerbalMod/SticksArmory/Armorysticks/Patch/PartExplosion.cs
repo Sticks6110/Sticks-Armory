@@ -52,7 +52,7 @@ namespace SticksArmory.Patch
             string efct = effects[UnityEngine.Random.Range(0, effects.Length - 1)];
             GameObject prefab = ArmorysticksMod.Instance.effects.LoadAsset<GameObject>(efct);
 
-            __instance.Game.GraphicsManager.ContextualFxSystem.TriggerEvent(new FXSticksExplosionEvent(__instance.Game.GraphicsManager.ContextualFxSystem, fXContextualEventParams, partContextData, prefab, fXContextualEventParams, d.ExplosionEffectSize));
+            __instance.Game.GraphicsManager.ContextualFxSystem.TriggerEvent(new FXSticksExplosionEvent(__instance.Game.GraphicsManager.ContextualFxSystem, fXContextualEventParams, partContextData, prefab, d));
 
             return false;
 

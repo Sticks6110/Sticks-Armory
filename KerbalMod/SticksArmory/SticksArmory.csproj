@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>11</LangVersion>
+    <ImplicitUsings>true</ImplicitUsings>
+	<RestoreAdditionalProjectSources>
+		https://nuget.bepinex.dev/v3/index.json
+	</RestoreAdditionalProjectSources>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="..\external_dlls\UnityEngine.dll" />
+    <Reference Include="..\external_dlls\UnityEngine.CoreModule.dll" />
+    <Reference Include="..\external_dlls\Assembly-CSharp.dll" />
+    <Reference Include="..\external_dlls\NewtonSoft.Json.dll" />
+    <Reference Include="..\external_dlls\NewtonSoft.Json.dll" />
+    <Reference Include="Assembly-CSharp">
+	    <HintPath>..\external_dlls\Assembly-CSharp.dll</HintPath>
+	    <Publicize>true</Publicize>
+	    <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\..\..\source\repos\TutorialProject\TutorialProject\TutorialProjectProject\bin\Debug\netstandard2.0\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Ak.Wwise.Api.WAAPI">
+      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\KSP2_x64_Data\Managed\Ak.Wwise.Api.WAAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="AK.Wwise.Unity.API">
+      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\KSP2_x64_Data\Managed\AK.Wwise.Unity.API.dll</HintPath>
+    </Reference>
+    <Reference Include="AK.Wwise.Unity.API.WwiseTypes">
+      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\KSP2_x64_Data\Managed\AK.Wwise.Unity.API.WwiseTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="AK.Wwise.Unity.MonoBehaviour">
+      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\KSP2_x64_Data\Managed\AK.Wwise.Unity.MonoBehaviour.dll</HintPath>
+    </Reference>
+    <Reference Include="AK.Wwise.Unity.Timeline">
+      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\KSP2_x64_Data\Managed\AK.Wwise.Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="SpaceWarp">
+      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\BepInEx\plugins\SpaceWarp\SpaceWarp.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\external_dlls\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>bin\Debug\netstandard2.0\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>bin\Debug\netstandard2.0\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>bin\Debug\netstandard2.0\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>bin\Debug\netstandard2.0\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>bin\Debug\netstandard2.0\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>bin\Debug\netstandard2.0\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>bin\Debug\netstandard2.0\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>bin\Debug\netstandard2.0\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\KSP2_x64_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>bin\Debug\netstandard2.0\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\external_dlls\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsNativeModule">
+      <HintPath>..\external_dlls\UnityEngine.UIElementsNativeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\external_dlls\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

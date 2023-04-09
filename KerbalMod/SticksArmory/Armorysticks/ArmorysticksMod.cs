@@ -58,63 +58,7 @@ namespace Armorysticks
             SticksArmory.Armorysticks.Logger.Log("Sticks Armory Loaded");
             SticksArmory.Armorysticks.Logger.Log("LOG LOCATION: " + BepInEx.Paths.PluginPath + @"/armorysticks/log.txt");
 
-            Game.Messages.Subscribe<PartCrashedMessage>(PartCrashed);
-
         }
-
-        public void PartCrashed(MessageCenterMessage m)
-        {
-
-            PartCrashedMessage crash = (PartCrashedMessage)m;
-
-
-
-            //crash.PartBehavior.GetComponent<Module_Missile>().Explode();
-
-        }
-
-        public SpaceSimulation GetSim()
-        {
-            return Game.SpaceSimulation;
-        }
-
-        public FXPartContextData GetFXPartContextData(PartBehavior b, PQS p)
-        {
-            return Game.GraphicsManager.ContextualFxSystem.GetPartContextData(b, p);
-        }
-
-        public void SticksArmoryFXInstance(FXPartContextData fxPartData, FXContextualEventParams param, GameObject effect, float scale)
-        {
-
-            Game.GraphicsManager.ContextualFxSystem.TriggerEvent(new FXSticksExplosionEvent(Game.GraphicsManager.ContextualFxSystem, param, fxPartData, effect, param, scale));
-        }
-
-        public UniverseModel GetUniverse()
-        {
-            return Game.UniverseModel;
-        }
-
-        public void OnApplicationQuit()
-        {
-            SticksArmory.Armorysticks.Logger.Closing();
-        }
-
-        public void Explode(FXExplosionContextualEvent explosion)
-        {
-            Game.GraphicsManager.ContextualFxSystem.TriggerEvent(explosion);
-        }
-
-        public ContextualFxSystem GetFxSystem()
-        {
-            return Game.GraphicsManager.ContextualFxSystem;
-        }
-
-        public FXPartContextData GetPartContextData(PartBehavior p, PQS pqs)
-        {
-            return Game.GraphicsManager.ContextualFxSystem.GetPartContextData(p, pqs);
-        }
-
-        private int ope = 0;
 
         public void Update()
         {

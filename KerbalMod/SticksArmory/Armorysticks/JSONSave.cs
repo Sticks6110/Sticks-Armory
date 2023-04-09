@@ -29,6 +29,10 @@ namespace SticksArmory.Armorysticks
         public float ExplosionEffectSize; //        m
         public float ExplosionDamage; //            float
         public int ExplosionArmorPenetration; //    (Look at ShrapnellArmorPenetration description i do not feel like rewriting it or copying it)
+        public bool CustomEffectDir; //             True if you do not want the explosion to face the hit normal
+        public float ExplosionEffectRotationX; //       If CustomEffectDir is true then it defaults to this (X)
+        public float ExplosionEffectRotationY; //       If CustomEffectDir is true then it defaults to this (Y)
+        public float ExplosionEffectRotationZ; //       If CustomEffectDir is true then it defaults to this (Z)
 
         public string AudioBase; //                 The next ones are just the audio names from the asset bundle (ex: Hellfire_base) you can also do multiple to randomize between by putting a comma (ex: Hellfire_fire_close_00,Hellfire_fire_close_01)
         public string AudioClose;

@@ -47,9 +47,11 @@ namespace SticksArmory.Modules
 
         private float timeSinceDeployed = 0;
         private float timeSinceLaunched = 0;
+        private float oprangemeters;
         private bool deployed;
         private bool launched;
-        private float secondsTillDry;
+
+        private Position dropPos;
 
         private RigidbodyBehavior rb;
 
@@ -79,11 +81,15 @@ namespace SticksArmory.Modules
 
         private void FixedUpdate()
         {
-            if(!launched || timeSinceLaunched >= secondsTillDry) return;
+            if(!launched || Position.Distance(dropPos, transform.Position) >= oprangemeters) return;
 
             float acceleration = (data.MaxSpeed - rb.activeRigidBody.velocity.magnitude) / timeSinceLaunched;
-
             rb.activeRigidBody.AddForce(acceleration * part.transform.forward * Time.deltaTime, ForceMode.Acceleration);
+
+            if (rb.activeRigidBody.velocity.magnitude > data.MaxSpeed)
+            {
+                rb.activeRigidBody.velocity = rb.activeRigidBody.velocity.normalized * data.MaxSpeed;
+            }
 
         }
 
@@ -116,11 +122,12 @@ namespace SticksArmory.Modules
             Module_Decouple de = GetComponent<Module_Decouple>();
             de.OnDecouple();
 
+            dropPos = transform.Position;
+
             rb = part.GetComponent<RigidbodyBehavior>();
 
             data = JSONSave.Launchables[part.SimObjectComponent.Name];
-
-            secondsTillDry = data.OperationalRange / (data.MaxSpeed / 1000);
+            oprangemeters = data.OperationalRange * 1000;
 
             deployed = true;
 
