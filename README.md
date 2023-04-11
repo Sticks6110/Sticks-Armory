@@ -1,5 +1,4 @@
-![](https://raw.githubusercontent.com/BeastBomber23/Sticks-Arsenal/main/assets/banner.gif)
-<br />Animation by Drewdus42#6450 on discord
+![](https://raw.githubusercontent.com/BeastBomber23/Sticks-Arsenal/main/assets/banner.png)
 # Sticks Armory
 
 A mod for Kerbal Space Program 2 thats adds in both modern and old weapons for combat
