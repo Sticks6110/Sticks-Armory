@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace SticksArmory.Armorysticks
 {
+
     [System.Serializable]
     public class WeaponJSONSaveData
     {
@@ -19,6 +20,8 @@ namespace SticksArmory.Armorysticks
         public string TextTntEquivilant; //             Statistics Side Panel String
         public string TextDetonation; //                Statistics Side Panel String
         public string TextOrigin; //                    Statistics Side Panel String
+        public string TextCalliber; //                  Statistics Side Panel String
+        public string TextFR; //                        Statistics Side Panel String
 
         public float MaxSpeed; //                   m/s
         public float OperationalRange; //           km
@@ -30,9 +33,9 @@ namespace SticksArmory.Armorysticks
         public float ExplosionDamage; //            float
         public int ExplosionArmorPenetration; //    (Look at ShrapnellArmorPenetration description i do not feel like rewriting it or copying it)
         public bool CustomEffectDir; //             True if you do not want the explosion to face the hit normal
-        public float ExplosionEffectRotationX; //       If CustomEffectDir is true then it defaults to this (X)
-        public float ExplosionEffectRotationY; //       If CustomEffectDir is true then it defaults to this (Y)
-        public float ExplosionEffectRotationZ; //       If CustomEffectDir is true then it defaults to this (Z)
+        public float ExplosionEffectRotationX; //   If CustomEffectDir is true then it defaults to this (X)
+        public float ExplosionEffectRotationY; //   If CustomEffectDir is true then it defaults to this (Y)
+        public float ExplosionEffectRotationZ; //   If CustomEffectDir is true then it defaults to this (Z)
 
         public string AudioBase; //                 The next ones are just the audio names from the asset bundle (ex: Hellfire_base) you can also do multiple to randomize between by putting a comma (ex: Hellfire_fire_close_00,Hellfire_fire_close_01)
         public string AudioClose;
@@ -51,18 +54,25 @@ namespace SticksArmory.Armorysticks
     }
 
     [System.Serializable]
-    public class ModuleJSONSaveData
+    public class PartJSONSaveData
     {
-        public string PartType; //                  radar
         public string PartId; //                    The Id of the used part
+
+        public bool Radar; //                       True if part is capable of being a radar
+        public float RadarRadius; //                Distance radar can go
+        public float RadarSensitivity; //           Radar sensitivty (Used for stealth)
+        public float RadarUpdate; //                How many seconds for each pulse
+
+
     }
 
     public class JSONSave
     {
 
-        public static Dictionary<string, WeaponJSONSaveData> Launchables = new Dictionary<string, WeaponJSONSaveData>();
-        
-        public static void LoadAllParts()
+        public static Dictionary<string, WeaponJSONSaveData> Weapons = new Dictionary<string, WeaponJSONSaveData>();
+        public static Dictionary<string, PartJSONSaveData> Parts = new Dictionary<string, PartJSONSaveData>();
+
+        public static void LoadAllWeapons()
         {
 
             DirectoryInfo folder = new DirectoryInfo(BepInEx.Paths.PluginPath + @"/armorysticks/weapons/");
@@ -72,27 +82,27 @@ namespace SticksArmory.Armorysticks
                 Armorysticks.Logger.Log(file);
                 string text = File.ReadAllText(file);
                 WeaponJSONSaveData data = JsonUtility.FromJson<WeaponJSONSaveData>(text);
-                Launchables.Add(data.PartId, data);
+                Weapons.Add(data.PartId, data);
                 Armorysticks.Logger.Log("Weapon Added: " + data.PartId);
             }
 
         }
 
-        public static WeaponJSONSaveData LoadSpecificPart(string jsonId)
+        public static void LoadAllParts()
         {
-            try
-            {
-                string dir = BepInEx.Paths.PluginPath + @"/armorysticks/weapons/" + jsonId + ".json";
 
-                string text = File.ReadAllText(dir);
-                WeaponJSONSaveData data = JsonUtility.FromJson<WeaponJSONSaveData>(text);
-                return data;
-            }
-            catch (Exception e)
+            DirectoryInfo folder = new DirectoryInfo(BepInEx.Paths.PluginPath + @"/armorysticks/parts/");
+
+            foreach (string file in Directory.GetFiles(folder.FullName, "*.json"))
             {
-                Debug.LogError(e);
-                return null;
+                Armorysticks.Logger.Log(file);
+                string text = File.ReadAllText(file);
+                PartJSONSaveData data = JsonUtility.FromJson<PartJSONSaveData>(text);
+                Parts.Add(data.PartId, data);
+                Armorysticks.Logger.Log("Part Added: " + data.PartId);
             }
+
         }
+
     }
 }

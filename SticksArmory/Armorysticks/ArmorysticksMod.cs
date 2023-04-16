@@ -15,6 +15,9 @@ using HarmonyLib;
 using KSP.OAB;
 using SticksArmory.Patch;
 using SticksArmory.Modules;
+using KSP.Game;
+using SticksArmory.Armorysticks.Patch;
+using SticksArmory.Armorysticks.Monobehaviors;
 
 namespace Armorysticks
 {
@@ -36,7 +39,18 @@ namespace Armorysticks
         public AssetBundle effects;
         public AssetBundle audio;
 
+        //https://github.com/Halbann/LazyOrbit/blob/master/LazyOrbit/LazyOrbit.cs
+        public static bool ValidScene => validScenes.Contains(GameManager.Instance.Game.GlobalGameState.GetState());
+        private static GameState[] validScenes = new[] { GameState.FlightView };
+
+        public KSP.Game.GameInstance GAME { get { return Game; } }
+
         public static string Path { get; private set; }
+
+        public void OnApplicationQuit()
+        {
+            SticksArmory.Armorysticks.Logger.Closing();
+        }
 
         public override void OnPreInitialized()
         {
@@ -45,7 +59,6 @@ namespace Armorysticks
             SticksArmory.Armorysticks.Logger.Log("Patching");
 
             Harmony.CreateAndPatchAll(typeof(ArmorysticksMod).Assembly);
-
         }
 
         public override void OnInitialized()
@@ -53,6 +66,9 @@ namespace Armorysticks
 
             Instance = this;
             JSONSave.LoadAllParts();
+            JSONSave.LoadAllWeapons();
+            Radar.Initialize();
+
             effects = AssetBundleLoader.LoadBundle("effects");
             audio = AssetBundleLoader.LoadBundle("audio");
             SticksArmory.Armorysticks.Logger.Log("Sticks Armory Loaded");
@@ -60,13 +76,16 @@ namespace Armorysticks
 
         }
 
+        int i = 0;
+
         public void Update()
         {
-
+            i = -1;
             if(uiLoaded == false)
             {
                 CreateMainMenuItem();
             }
+
         }
 
         public void CreateMainMenuItem()

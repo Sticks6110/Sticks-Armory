@@ -17,7 +17,7 @@ using KSP.Game;
 using KSP.Iteration.UI.Binding;
 using System.Reflection;
 
-namespace SticksArmory.Patch
+namespace SticksArmory.Armorysticks.Patch
 {
     //[HarmonyPatch(typeof(PartBehavior), nameof(PartBehavior.OnPartComponentExplosion))]
     [HarmonyPatch(typeof(PartBehavior), nameof(PartBehavior.TriggerSurfaceImpactEffect))]
@@ -29,9 +29,9 @@ namespace SticksArmory.Patch
 
             Armorysticks.Logger.Log("Explosion Prefix");
 
-            if (!JSONSave.Launchables.ContainsKey(__instance.Name) || __instance == null) return true;
+            if (!JSONSave.Weapons.ContainsKey(__instance.Name) || __instance == null) return true;
 
-            WeaponJSONSaveData d = JSONSave.Launchables[__instance.Name];
+            WeaponJSONSaveData d = JSONSave.Weapons[__instance.Name];
 
             PQS pqs = null;
             if (__instance.Game.SpaceSimulation.TryGetViewObjectComponent<CelestialBodyBehavior>(celestialBodyModel, out var viewObjectComponent))

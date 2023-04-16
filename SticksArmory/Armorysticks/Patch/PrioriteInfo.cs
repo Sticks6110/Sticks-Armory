@@ -17,14 +17,52 @@ namespace SticksArmory.Patch
         public static void Postfix(ref List<KeyValuePair<string, string>> __result, IObjectAssemblyAvailablePart IOBAPart)
         {
 
-            if (JSONSave.Launchables.ContainsKey(IOBAPart.PartData.partName))
+            if (JSONSave.Parts.ContainsKey(IOBAPart.PartData.partName))
             {
-                WeaponJSONSaveData data = JSONSave.Launchables[IOBAPart.PartData.partName];
-                __result.Add(new KeyValuePair<string, string>("Type", data.TextType));
-                __result.Add(new KeyValuePair<string, string>("Guidance", data.TextGuidance));
-                __result.Add(new KeyValuePair<string, string>("Warhead", data.TextWarhead));
-                __result.Add(new KeyValuePair<string, string>("Detonation", data.TextDetonation));
-                __result.Add(new KeyValuePair<string, string>("Tnt Equivelent", data.TextTntEquivilant));
+                PartJSONSaveData data = JSONSave.Parts[IOBAPart.PartData.partName];
+
+                if(data.Radar)
+                {
+                    __result.Add(new KeyValuePair<string, string>("Radar", (data.RadarUpdate == 0) ? "Continuous" : "Pulse"));
+                    __result.Add(new KeyValuePair<string, string>("Radar Distance", (data.RadarRadius * 2).ToString()));
+                    __result.Add(new KeyValuePair<string, string>("Radar Sensitivity", data.RadarSensitivity.ToString()));
+                }
+
+            }
+
+            if (JSONSave.Weapons.ContainsKey(IOBAPart.PartData.partName))
+            {
+                WeaponJSONSaveData data = JSONSave.Weapons[IOBAPart.PartData.partName];
+                switch (data.PartType)
+                {
+
+                    case "missile":
+                        __result.Add(new KeyValuePair<string, string>("Type", data.TextType));
+                        __result.Add(new KeyValuePair<string, string>("Guidance", data.TextGuidance));
+                        __result.Add(new KeyValuePair<string, string>("Warhead", data.TextWarhead));
+                        __result.Add(new KeyValuePair<string, string>("Detonation", data.TextDetonation));
+                        __result.Add(new KeyValuePair<string, string>("Tnt Equivelent", data.TextTntEquivilant));
+                        break;
+
+                    case "bomb":
+                        __result.Add(new KeyValuePair<string, string>("Type", data.TextType));
+                        __result.Add(new KeyValuePair<string, string>("Warhead", data.TextWarhead));
+                        __result.Add(new KeyValuePair<string, string>("Tnt Equivelent", data.TextTntEquivilant));
+                        break;
+
+                    case "gunraycast":
+                        __result.Add(new KeyValuePair<string, string>("Calliber", data.TextCalliber));
+                        __result.Add(new KeyValuePair<string, string>("Fire Rate", data.TextFR));
+                        break;
+
+                    case "gunphysical":
+                        __result.Add(new KeyValuePair<string, string>("Calliber", data.TextCalliber));
+                        __result.Add(new KeyValuePair<string, string>("Fire Rate", data.TextFR));
+                        break;
+
+                    default:
+                        break;
+                }
                 __result.Add(new KeyValuePair<string, string>("Origin", data.TextOrigin));
             }
 

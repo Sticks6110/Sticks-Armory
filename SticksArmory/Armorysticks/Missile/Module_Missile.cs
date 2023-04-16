@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Serialization;
 using static RTG.CameraFocus;
 
 namespace SticksArmory.Modules
@@ -37,12 +38,20 @@ namespace SticksArmory.Modules
         {
             base.OnInitialize();
 
-            base.AddActionGroupAction(new Action<bool>(this.Launch), KSP.Sim.KSPActionGroup.None, "Launch Missile", this.dataMissile.IsDeployed);
-            base.AddActionGroupAction(new Action<bool>(this.CameraOn), KSP.Sim.KSPActionGroup.None, "Enable Camera", this.dataMissile.CameraEnabled);
-            base.AddActionGroupAction(new Action<bool>(this.CameraOff), KSP.Sim.KSPActionGroup.None, "Disable Camera", this.dataMissile.CameraEnabled);
+            ModuleAction _actionLaunch = new ModuleAction(new Action(StageLaunch));
+            dataMissile.AddAction("STArmory/Modules/Missile/Data/Launch", _actionLaunch, 1);
+            dataMissile.SetVisible(_actionLaunch, base.PartBackingMode == PartBackingModes.Flight);
 
-            _actionDecouple = new ModuleAction(new Action(StageLaunch));
-            dataMissile.SetStageActivationAction(_actionDecouple, this);
+            ModuleAction _actionCamera = new ModuleAction(new Action(CameraToggle));
+            dataMissile.AddAction("STArmory/Modules/Missile/Data/Camera", _actionCamera, 2);
+            dataMissile.SetVisible(_actionCamera, base.PartBackingMode == PartBackingModes.Flight);
+
+        }
+
+        public override void AddDataModules()
+        {
+            base.AddDataModules();
+            DataModules.TryAddUnique(dataMissile, out dataMissile);
         }
 
         private float timeSinceDeployed = 0;
@@ -67,7 +76,7 @@ namespace SticksArmory.Modules
 
             timeSinceDeployed += Time.deltaTime;
 
-            if(timeSinceDeployed >= this.dataMissile.DropToFire.GetValue() && !launched)
+            if(timeSinceDeployed >= 1 && !launched)
             {
                 launched = true;
                 Armorysticks.Logger.Log("LAUNCHING");
@@ -126,21 +135,16 @@ namespace SticksArmory.Modules
 
             rb = part.GetComponent<RigidbodyBehavior>();
 
-            data = JSONSave.Launchables[part.SimObjectComponent.Name];
+            data = JSONSave.Weapons[part.SimObjectComponent.Name];
             oprangemeters = data.OperationalRange * 1000;
 
             deployed = true;
 
         }
 
-        public void CameraOff(bool state)
+        public void CameraToggle()
         {
 
-        }
-
-        public void CameraOn(bool state)
-        {
-            
         }
 
     }

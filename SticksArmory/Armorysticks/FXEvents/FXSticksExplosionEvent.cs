@@ -68,6 +68,7 @@ namespace SticksArmory.Armorysticks.FXEvents
             }
 
             //_spawnedPrefab.transform.localScale = new Vector3(data.ExplosionEffectSize, data.ExplosionEffectSize, data.ExplosionEffectSize);
+            //_particleSystem.playbackSpeed = 1 / data.ExplosionEffectSize;
             //explo.transform.localRotation = Quaternion.Euler(0, 260, 90);
 
             //_particleSystem.Play();
