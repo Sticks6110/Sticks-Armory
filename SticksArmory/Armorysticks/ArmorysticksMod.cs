@@ -18,6 +18,8 @@ using SticksArmory.Modules;
 using KSP.Game;
 using SticksArmory.Armorysticks.Patch;
 using SticksArmory.Armorysticks.Monobehaviors;
+using SpaceWarp.API.Parts;
+using static KSP.Api.UIDataPropertyStrings.View.Vessel.Stages;
 
 namespace Armorysticks
 {
@@ -59,6 +61,7 @@ namespace Armorysticks
             SticksArmory.Armorysticks.Logger.Log("Patching");
 
             Harmony.CreateAndPatchAll(typeof(ArmorysticksMod).Assembly);
+
         }
 
         public override void OnInitialized()

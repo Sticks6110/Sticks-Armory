@@ -1,7 +1,9 @@
 ﻿using Armorysticks;
+using KSP.Api;
 using KSP.Networking.MP.Utils;
 using KSP.Sim;
 using KSP.Sim.Definitions;
+using KSP.Sim.impl;
 using KSP.VFX;
 using System;
 using System.Collections.Generic;
@@ -20,7 +22,8 @@ namespace SticksArmory.Armorysticks.FXEvents
         public GameObject effect;
         public FXContextualEventParams origin;
         public WeaponJSONSaveData data;
-
+        public FXPartContextData partData;
+        
         public FXSticksExplosionEvent(ContextualFxSystem system, FXContextualEventParams eventParams, FXPartContextData partData, GameObject effect, WeaponJSONSaveData data) : base(eventParams, system, partData)
         {
 
@@ -28,11 +31,18 @@ namespace SticksArmory.Armorysticks.FXEvents
             this.origin = eventParams;
             this.effect = effect;
             this.data = data;
+            this.partData = partData;
+
         }
 
         public override void Tick(FXContextData context)
         {
+
+            Armorysticks.Logger.Log("TICK");
+
             base.Tick(context);
+
+            //_spawnedPrefab.transform.position = context.
         }
 
         public override void CleanUp()

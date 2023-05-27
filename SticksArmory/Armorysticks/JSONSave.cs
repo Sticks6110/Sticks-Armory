@@ -25,6 +25,7 @@ namespace SticksArmory.Armorysticks
 
         public float MaxSpeed; //                   m/s
         public float OperationalRange; //           km
+        public float TurnSpeed; //                  torque multiplier
 
         public string CustomAssetBundle;//          put na if you dont have one and are just gonna use the default sticks armory one, put custom asset bundles into the asset folder then bundles of the sticks armory mod
         public string ExplosionEffect; //           ex: Explosion3D_1

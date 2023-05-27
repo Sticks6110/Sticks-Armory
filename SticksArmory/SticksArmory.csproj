@@ -46,7 +46,7 @@
       <HintPath>bin\Debug\netstandard2.0\NewtonSoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SpaceWarp">
-      <HintPath>bin\Debug\netstandard2.0\SpaceWarp.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\BepInEx\plugins\SpaceWarp\SpaceWarp.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>bin\Debug\netstandard2.0\Unity.InputSystem.dll</HintPath>

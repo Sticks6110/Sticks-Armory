@@ -1,4 +1,5 @@
 ﻿using Armorysticks;
+using KSP.Game;
 using KSP.Modules;
 using KSP.Rendering.Planets;
 using KSP.Sim;
@@ -8,6 +9,7 @@ using KSP.VFX;
 using SticksArmory.Armorysticks;
 using SticksArmory.Armorysticks.FXEvents;
 using SticksArmory.Armorysticks.Missile;
+using SticksArmory.Armorysticks.Monobehaviors;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -66,6 +68,8 @@ namespace SticksArmory.Modules
 
         public WeaponJSONSaveData data;
 
+        private VesselComponent pastParent;
+
 
 
         //Interfaces
@@ -94,6 +98,12 @@ namespace SticksArmory.Modules
 
             float acceleration = (data.MaxSpeed - rb.activeRigidBody.velocity.magnitude) / timeSinceLaunched;
             rb.activeRigidBody.AddForce(acceleration * part.transform.forward * Time.deltaTime, ForceMode.Acceleration);
+
+            Vector3 dir = ((Radar.VesselLocks[pastParent].pos - pastParent.transform.Position).vector);
+
+            Quaternion rotation = Quaternion.LookRotation((Radar.VesselLocks[pastParent].pos - pastParent.transform.Position).vector);
+
+            partOwner.transform.rotation = Quaternion.RotateTowards(partOwner.transform.rotation, rotation, data.TurnSpeed * 100 * Time.deltaTime);
 
             if (rb.activeRigidBody.velocity.magnitude > data.MaxSpeed)
             {
@@ -128,6 +138,9 @@ namespace SticksArmory.Modules
         public void Launch(bool state)
         {
             if (launched || deployed) return;
+
+            pastParent = GameManager.Instance.Game.ViewController.GetActiveSimVessel(true);
+
             Module_Decouple de = GetComponent<Module_Decouple>();
             de.OnDecouple();
 

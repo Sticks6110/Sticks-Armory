@@ -24,6 +24,7 @@ namespace SticksArmory.Armorysticks.Patch
 
         public static void Postfix(PartBehaviourModule __instance)
         {
+            if (__instance.PartBackingMode != PartBackingModes.Flight || !ArmorysticksMod.ValidScene) return;
             if (UniqueParts.Contains(__instance.part)) return;
             if (!JSONSave.Parts.ContainsKey(__instance.part.Name)) return;
 
@@ -34,6 +35,8 @@ namespace SticksArmory.Armorysticks.Patch
 
                 Monobehaviors.Radar radgui = __instance.gameObject.AddComponent<Monobehaviors.Radar>();
                 radgui.parent = __instance.part.Model;
+                radgui.parentBehaviour = __instance.part;
+                radgui.parentBehaviourModule = __instance;
                 radgui.data = js;
 
                 Radars.Add(__instance.part, radgui);
@@ -41,7 +44,8 @@ namespace SticksArmory.Armorysticks.Patch
                 Data_Radar dr = new Data_Radar();
 
                 ModuleAction _toggleRadar = new ModuleAction(new Action(() => { ToggleRadar(__instance.part); }));
-                dr.AddAction("Toggle Radar", _toggleRadar, 1);
+                dr.AddAction("STArmory/Modules/Radar/Data/Toggle/Radar", _toggleRadar, 1);
+                //STArmory/Modules/Radar/Data/Toggle/RWR
                 dr.SetVisible(_toggleRadar, __instance.PartBackingMode == PartBackingModes.Flight);
 
                 __instance.DataModules.TryAddUnique(dr, out dr);
