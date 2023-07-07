@@ -16,10 +16,10 @@ using SticksArmory.Modules;
 using KSP.Game;
 using KSP.Iteration.UI.Binding;
 using System.Reflection;
+using KSP.Audio;
 
 namespace SticksArmory.Armorysticks.Patch
 {
-    //[HarmonyPatch(typeof(PartBehavior), nameof(PartBehavior.OnPartComponentExplosion))]
     [HarmonyPatch(typeof(PartBehavior), nameof(PartBehavior.TriggerSurfaceImpactEffect))]
     class PartExplosion
     {
@@ -27,7 +27,7 @@ namespace SticksArmory.Armorysticks.Patch
         public static bool Prefix(PartBehavior __instance, Vector3 contactPoint, Quaternion effectRotation, float deviationFromVertical, SimulationObjectModel celestialBodyModel, Collider hitCollider)
         {
 
-            Armorysticks.Logger.Log("Explosion Prefix");
+            Logger.Log("Explosion Prefix");
 
             if (!JSONSave.Weapons.ContainsKey(__instance.Name) || __instance == null) return true;
 
@@ -55,6 +55,11 @@ namespace SticksArmory.Armorysticks.Patch
             VesselComponent vessel = GameManager.Instance.Game.ViewController.GetActiveSimVessel(true);
 
             __instance.Game.GraphicsManager.ContextualFxSystem.TriggerEvent(new FXSticksExplosionEvent(__instance.Game.GraphicsManager.ContextualFxSystem, fXContextualEventParams, partContextData, prefab, d));
+
+            string[] sounds = d.AudioExplosion.Split(char.Parse(","));
+            string snd = sounds[UnityEngine.Random.Range(0, sounds.Length - 1)];
+
+            KSPBaseAudio.PostEvent(snd, __instance.gameObject);
 
             return false;
 

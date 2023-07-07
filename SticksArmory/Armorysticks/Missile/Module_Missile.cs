@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static KSP.Api.UIDataPropertyStrings;
 using static RTG.CameraFocus;
 
 namespace SticksArmory.Modules
@@ -80,7 +81,7 @@ namespace SticksArmory.Modules
 
             timeSinceDeployed += Time.deltaTime;
 
-            if(timeSinceDeployed >= 1 && !launched)
+            if(timeSinceDeployed >= data.DropToFireTime && !launched)
             {
                 launched = true;
                 Armorysticks.Logger.Log("LAUNCHING");
@@ -94,16 +95,24 @@ namespace SticksArmory.Modules
 
         private void FixedUpdate()
         {
-            if(!launched || Position.Distance(dropPos, transform.Position) >= oprangemeters) return;
+            if(!launched) return;
+            //if (!launched || Position.Distance(dropPos, transform.Position) >= oprangemeters) return;
 
             float acceleration = (data.MaxSpeed - rb.activeRigidBody.velocity.magnitude) / timeSinceLaunched;
             rb.activeRigidBody.AddForce(acceleration * part.transform.forward * Time.deltaTime, ForceMode.Acceleration);
 
-            Vector3 dir = ((Radar.VesselLocks[pastParent].pos - pastParent.transform.Position).vector);
+            //UPDATE IN FUTURE TO BE MORE ACUATE SUCH AS TAKING INTO ACCOUNT PLANET CURVATURE.
 
-            Quaternion rotation = Quaternion.LookRotation((Radar.VesselLocks[pastParent].pos - pastParent.transform.Position).vector);
+            Vector3d p1 = GameManager.Instance.Game.UniverseView.PhysicsSpace.PositionToPhysics(Radar.VesselLocks[pastParent].pos); //Radar Blip
+            Vector3 p2 = part.transform.position;     //Parent
+            Game.CameraManager.CreateFlightCamera(new CameraTweakables());
+            Vector3 dir = (p1 - p2).normalized;
 
-            partOwner.transform.rotation = Quaternion.RotateTowards(partOwner.transform.rotation, rotation, data.TurnSpeed * 100 * Time.deltaTime);
+            rb.activeRigidBody.angularVelocity = -Vector3.Cross(dir, part.transform.forward) * data.TurnSpeed;
+
+            //rb.activeRigidBody.MoveRotation(Quaternion.RotateTowards(r1, rot, data.TurnSpeed));
+
+            //Armorysticks.Logger.Log(torque);
 
             if (rb.activeRigidBody.velocity.magnitude > data.MaxSpeed)
             {

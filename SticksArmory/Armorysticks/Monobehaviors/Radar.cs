@@ -111,6 +111,7 @@ namespace SticksArmory.Armorysticks.Monobehaviors
                     {
                         vessel = ve,
                         pos = ve.transform.Position,
+                        rot = ve.transform.Rotation,
                         hudPos = hudPos,
                     });
                 }
@@ -175,6 +176,7 @@ namespace SticksArmory.Armorysticks.Monobehaviors
     {
         public VesselComponent vessel;
         public Position pos;
+        public Rotation rot;
         public Vector2 hudPos;
     }
 

@@ -20,6 +20,9 @@ using SticksArmory.Armorysticks.Patch;
 using SticksArmory.Armorysticks.Monobehaviors;
 using SpaceWarp.API.Parts;
 using static KSP.Api.UIDataPropertyStrings.View.Vessel.Stages;
+using KSP.Networking.OnlineServices.Telemetry;
+using System.Runtime.InteropServices;
+using KSP.Audio;
 
 namespace Armorysticks
 {
@@ -39,7 +42,6 @@ namespace Armorysticks
         public static ArmorysticksMod Instance;
 
         public AssetBundle effects;
-        public AssetBundle audio;
 
         //https://github.com/Halbann/LazyOrbit/blob/master/LazyOrbit/LazyOrbit.cs
         public static bool ValidScene => validScenes.Contains(GameManager.Instance.Game.GlobalGameState.GetState());
@@ -48,6 +50,7 @@ namespace Armorysticks
         public KSP.Game.GameInstance GAME { get { return Game; } }
 
         public static string Path { get; private set; }
+        public uint audioID;
 
         public void OnApplicationQuit()
         {
@@ -72,22 +75,31 @@ namespace Armorysticks
             JSONSave.LoadAllWeapons();
             Radar.Initialize();
 
+            SticksArmory.Armorysticks.Logger.Log("Getting Bundles");
+
             effects = AssetBundleLoader.LoadBundle("effects");
-            audio = AssetBundleLoader.LoadBundle("audio");
+
+            SticksArmory.Armorysticks.Logger.Log("Loading WWISE");
+
+            byte[] bytes = File.ReadAllBytes(BepInEx.Paths.PluginPath + @"/armorysticks/assets/audio/STArmory.bnk");
+            SticksArmory.Armorysticks.Logger.Log(AkSoundEngine.LoadBankMemoryView(GCHandle.Alloc(bytes, GCHandleType.Pinned).AddrOfPinnedObject(), (uint)bytes.Length, out uint bankId).ToString());
+            audioID = bankId;
+            SticksArmory.Armorysticks.Logger.Log(audioID);
+            AkSoundEngine.SetRTPCValue("Volume_Explosions", 100);
+
             SticksArmory.Armorysticks.Logger.Log("Sticks Armory Loaded");
             SticksArmory.Armorysticks.Logger.Log("LOG LOCATION: " + BepInEx.Paths.PluginPath + @"/armorysticks/log.txt");
 
         }
 
-        int i = 0;
-
         public void Update()
         {
-            i = -1;
             if(uiLoaded == false)
             {
                 CreateMainMenuItem();
             }
+
+            //Game.UniverseModel.GetAllVessels().ForEach(v => { v.OnVesselDestroyed});
 
         }
 

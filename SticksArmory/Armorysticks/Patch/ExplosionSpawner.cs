@@ -18,6 +18,8 @@ namespace SticksArmory.Armorysticks.Patch
 
             if (!prefabAssetName.Contains("fx_explosion_sticks")) return true;
 
+            Logger.Log("ExplosionSpawner Prefix");
+
             GameObject result = ArmorysticksMod.Instance.effects.LoadAsset<GameObject>(prefabAssetName.Split('/')[1]);
 
             __instance._loadedVFXCache.AddOrUpdate(prefabAssetName, result);

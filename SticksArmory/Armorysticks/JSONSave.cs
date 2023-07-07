@@ -26,6 +26,7 @@ namespace SticksArmory.Armorysticks
         public float MaxSpeed; //                   m/s
         public float OperationalRange; //           km
         public float TurnSpeed; //                  torque multiplier
+        public float DropToFireTime; //             s (Time between deploying and it firing)
 
         public string CustomAssetBundle;//          put na if you dont have one and are just gonna use the default sticks armory one, put custom asset bundles into the asset folder then bundles of the sticks armory mod
         public string ExplosionEffect; //           ex: Explosion3D_1
@@ -38,7 +39,7 @@ namespace SticksArmory.Armorysticks
         public float ExplosionEffectRotationY; //   If CustomEffectDir is true then it defaults to this (Y)
         public float ExplosionEffectRotationZ; //   If CustomEffectDir is true then it defaults to this (Z)
 
-        public string AudioBase; //                 The next ones are just the audio names from the asset bundle (ex: Hellfire_base) you can also do multiple to randomize between by putting a comma (ex: Hellfire_fire_close_00,Hellfire_fire_close_01)
+        public string AudioBase; //                 The next ones are just the WWISE Events
         public string AudioClose;
         public string AudioFar;
         public string AudioFireClose;

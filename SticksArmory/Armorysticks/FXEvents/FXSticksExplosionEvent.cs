@@ -1,5 +1,6 @@
 ﻿using Armorysticks;
 using KSP.Api;
+using KSP.Game;
 using KSP.Networking.MP.Utils;
 using KSP.Sim;
 using KSP.Sim.Definitions;
@@ -23,6 +24,9 @@ namespace SticksArmory.Armorysticks.FXEvents
         public FXContextualEventParams origin;
         public WeaponJSONSaveData data;
         public FXPartContextData partData;
+
+        public Position pos;
+        public Rotation rot;
         
         public FXSticksExplosionEvent(ContextualFxSystem system, FXContextualEventParams eventParams, FXPartContextData partData, GameObject effect, WeaponJSONSaveData data) : base(eventParams, system, partData)
         {
@@ -37,8 +41,9 @@ namespace SticksArmory.Armorysticks.FXEvents
 
         public override void Tick(FXContextData context)
         {
-
-            Armorysticks.Logger.Log("TICK");
+            if (_vfxSpawned == false) return;
+            _spawnedPrefab.transform.position = GameManager.Instance.Game.UniverseView.PhysicsSpace.PositionToPhysics(pos);
+            _spawnedPrefab.transform.rotation = GameManager.Instance.Game.UniverseView.PhysicsSpace.RotationToPhysics(rot);
 
             base.Tick(context);
 
@@ -58,9 +63,12 @@ namespace SticksArmory.Armorysticks.FXEvents
 
             //GameObject pr = ArmorysticksMod.Instance.effects.LoadAsset<GameObject>(prefab.name);
             //_spawnedPrefab = UnityEngine.Object.Instantiate(prefab, origin.SourcePosition, origin.SourceRotation);
-
             _spawnedPrefab = UnityEngine.Object.Instantiate(effect, origin.SourcePosition, origin.SourceRotation);
-            _particleSystem = _spawnedPrefab.GetComponentInChildren<ParticleSystem>();
+            _particleSystems = new ParticleSystem[1] { _spawnedPrefab.GetComponentInChildren<ParticleSystem>() };
+
+            this.pos = GameManager.Instance.Game.UniverseView.PhysicsSpace.PhysicsToPosition(_spawnedPrefab.transform.position);
+            this.rot = GameManager.Instance.Game.UniverseView.PhysicsSpace.PhysicsToRotation(_spawnedPrefab.transform.rotation);
+
             parameterizers = _spawnedPrefab.GetComponentsInChildren<VFXParameterizer>();
 
             if (parameterizers.Length != 0)
