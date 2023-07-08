@@ -17,6 +17,7 @@ using KSP.Game;
 using KSP.Iteration.UI.Binding;
 using System.Reflection;
 using KSP.Audio;
+using RTG;
 
 namespace SticksArmory.Armorysticks.Patch
 {
@@ -59,6 +60,7 @@ namespace SticksArmory.Armorysticks.Patch
             string[] sounds = d.AudioExplosion.Split(char.Parse(","));
             string snd = sounds[UnityEngine.Random.Range(0, sounds.Length - 1)];
 
+            KSPBaseAudio.PostEvent(d.AudioBaseStop, __instance.gameObject);
             KSPBaseAudio.PostEvent(snd, __instance.gameObject);
 
             return false;

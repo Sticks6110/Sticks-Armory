@@ -39,11 +39,9 @@ namespace SticksArmory.Armorysticks
         public float ExplosionEffectRotationY; //   If CustomEffectDir is true then it defaults to this (Y)
         public float ExplosionEffectRotationZ; //   If CustomEffectDir is true then it defaults to this (Z)
 
-        public string AudioBase; //                 The next ones are just the WWISE Events
-        public string AudioClose;
-        public string AudioFar;
-        public string AudioFireClose;
-        public string AudioFireFar;
+        public string AudioBaseStart; //                 The next ones are just the WWISE Events
+        public string AudioBaseStop;
+        public string AudioFire;
         public string AudioFireInternal;
         public string AudioExplosion;
 

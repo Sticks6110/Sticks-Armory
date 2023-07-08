@@ -105,14 +105,6 @@ namespace SticksArmory.Modules
 
             Vector3d p1 = GameManager.Instance.Game.UniverseView.PhysicsSpace.PositionToPhysics(Radar.VesselLocks[pastParent].pos); //Radar Blip
             Vector3 p2 = part.transform.position;     //Parent
-            Game.CameraManager.CreateFlightCamera(new CameraTweakables());
-            Vector3 dir = (p1 - p2).normalized;
-
-            rb.activeRigidBody.angularVelocity = -Vector3.Cross(dir, part.transform.forward) * data.TurnSpeed;
-
-            //rb.activeRigidBody.MoveRotation(Quaternion.RotateTowards(r1, rot, data.TurnSpeed));
-
-            //Armorysticks.Logger.Log(torque);
 
             if (rb.activeRigidBody.velocity.magnitude > data.MaxSpeed)
             {
@@ -161,6 +153,9 @@ namespace SticksArmory.Modules
             oprangemeters = data.OperationalRange * 1000;
 
             deployed = true;
+
+            KSPBaseAudio.PostEvent(data.AudioFire, gameObject);
+            KSPBaseAudio.PostEvent(data.AudioBaseStart, gameObject);
 
         }
 

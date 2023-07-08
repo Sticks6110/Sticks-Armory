@@ -64,7 +64,7 @@ namespace SticksArmory.Armorysticks.FXEvents
             //GameObject pr = ArmorysticksMod.Instance.effects.LoadAsset<GameObject>(prefab.name);
             //_spawnedPrefab = UnityEngine.Object.Instantiate(prefab, origin.SourcePosition, origin.SourceRotation);
             _spawnedPrefab = UnityEngine.Object.Instantiate(effect, origin.SourcePosition, origin.SourceRotation);
-            _particleSystems = new ParticleSystem[1] { _spawnedPrefab.GetComponentInChildren<ParticleSystem>() };
+            _particleSystems = _spawnedPrefab.GetComponentsInChildren<ParticleSystem>();
 
             this.pos = GameManager.Instance.Game.UniverseView.PhysicsSpace.PhysicsToPosition(_spawnedPrefab.transform.position);
             this.rot = GameManager.Instance.Game.UniverseView.PhysicsSpace.PhysicsToRotation(_spawnedPrefab.transform.rotation);
@@ -85,11 +85,14 @@ namespace SticksArmory.Armorysticks.FXEvents
                 _spawnedPrefab.transform.rotation = Quaternion.Euler(data.ExplosionEffectRotationX, data.ExplosionEffectRotationY, data.ExplosionEffectRotationZ);
             }
 
-            //_spawnedPrefab.transform.localScale = new Vector3(data.ExplosionEffectSize, data.ExplosionEffectSize, data.ExplosionEffectSize);
-            //_particleSystem.playbackSpeed = 1 / data.ExplosionEffectSize;
-            //explo.transform.localRotation = Quaternion.Euler(0, 260, 90);
+            _particleSystems.ToList().ForEach((ParticleSystem i) => {
+                i.playbackSpeed = 1 / data.ExplosionEffectSize;
+                i.scalingMode = ParticleSystemScalingMode.Local;
+                i.transform.localScale = new Vector3(data.ExplosionEffectSize, data.ExplosionEffectSize, data.ExplosionEffectSize);
+            });
 
-            //_particleSystem.Play();
+            //SpawnedPrefab.transform.localScale = new Vector3(data.ExplosionEffectSize, data.ExplosionEffectSize, data.ExplosionEffectSize);
+
             _vfxSpawned = true;
             Armorysticks.Logger.Log("EXPLOSION");
         }
