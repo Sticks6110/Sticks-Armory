@@ -106,7 +106,7 @@ namespace Armorysticks
 
         public void OnGUI()
         {
-            SettingsWindow.OnGUI();
+            //SettingsWindow.OnGUI();
         }
 
         public void CreateMainMenuItem()
@@ -121,7 +121,7 @@ namespace Armorysticks
                 TMP_Text btnText = btn.GetComponentInChildren<TMP_Text>();
                 btnText.text = "Sticks Armory";
                 Destroy(btn.GetComponentInChildren<UIAction_Void_Button>());
-                btn.GetComponentInChildren<UIAction_Void_Button>().button.onClick.AddListener(SettingsWindow.SettingsMenuOpened);
+                //btn.GetComponentInChildren<UIAction_Void_Button>().button.onClick.AddListener(SettingsWindow.SettingsMenuOpened);
                 
                 uiLoaded = true;
 

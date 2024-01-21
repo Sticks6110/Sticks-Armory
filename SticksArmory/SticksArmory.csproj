@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>11</LangVersion>
     <ImplicitUsings>true</ImplicitUsings>
@@ -9,6 +9,11 @@
 		https://nuget.bepinex.dev/v3/index.json
 	</RestoreAdditionalProjectSources>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Armorysticks\GUI\**" />
+    <EmbeddedResource Remove="Armorysticks\GUI\**" />
+    <None Remove="Armorysticks\GUI\**" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.0">
       <PrivateAssets>all</PrivateAssets>
@@ -35,18 +40,22 @@
       <HintPath>bin\Debug\netstandard2.0\AK.Wwise.Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\KSP2_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
-	    <Publicize>true</Publicize>
-	    <Private>false</Private>
+      <HintPath>bin\Debug\netstandard2.0\Assembly-CSharp.dll</HintPath>
+	  <Publicize>true</Publicize>
+      <Private>false</Private>
+	  <PrivateAssets>all</PrivateAssets>
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>bin\Debug\netstandard2.0\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>bin\Debug\netstandard2.0\NewtonSoft.Json.dll</HintPath>
+      <HintPath>bin\Debug\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SpaceWarp">
-      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\BepInEx\plugins\SpaceWarp\SpaceWarp.dll</HintPath>
+      <HintPath>bin\Debug\netstandard2.0\SpaceWarp.dll</HintPath>
+    </Reference>
+    <Reference Include="SpaceWarp.Core">
+      <HintPath>bin\Debug\netstandard2.0\SpaceWarp.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>bin\Debug\netstandard2.0\Unity.InputSystem.dll</HintPath>
@@ -93,14 +102,8 @@
     <Reference Include="UnityEngine.UIElementsModule">
       <HintPath>bin\Debug\netstandard2.0\UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UIElementsNativeModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.UIElementsNativeModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UIModule">
       <HintPath>bin\Debug\netstandard2.0\UnityEngine.UIModule.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Armorysticks\GUI\" />
   </ItemGroup>
 </Project>

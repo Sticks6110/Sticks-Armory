@@ -1,5 +1,6 @@
 ﻿using Armorysticks;
 using KSP.Game;
+using KSP.Iteration.UI.Binding;
 using KSP.Modules;
 using KSP.Rendering.Planets;
 using KSP.Sim;
@@ -16,6 +17,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Serialization;
 using static KSP.Api.UIDataPropertyStrings;
+using static KSP.Modules.Data_Engine;
 using static RTG.CameraFocus;
 
 namespace SticksArmory.Modules
@@ -44,11 +46,6 @@ namespace SticksArmory.Modules
             ModuleAction _actionLaunch = new ModuleAction(new Action(StageLaunch));
             dataMissile.AddAction("STArmory/Modules/Missile/Data/Launch", _actionLaunch, 1);
             dataMissile.SetVisible(_actionLaunch, base.PartBackingMode == PartBackingModes.Flight);
-
-            ModuleAction _actionCamera = new ModuleAction(new Action(CameraToggle));
-            dataMissile.AddAction("STArmory/Modules/Missile/Data/Camera", _actionCamera, 2);
-            dataMissile.SetVisible(_actionCamera, base.PartBackingMode == PartBackingModes.Flight);
-
         }
 
         public override void AddDataModules()
@@ -57,112 +54,16 @@ namespace SticksArmory.Modules
             DataModules.TryAddUnique(dataMissile, out dataMissile);
         }
 
-        private float timeSinceDeployed = 0;
-        private float timeSinceLaunched = 0;
-        private float oprangemeters;
-        private bool deployed;
-        private bool launched;
-
-        private Position dropPos;
-
-        private RigidbodyBehavior rb;
-
-        public WeaponJSONSaveData data;
-
-        private VesselComponent pastParent;
-
-
-
-        //Interfaces
-
-        private void Update()
+        public void StageLaunch()
         {
-            if (!deployed) return;
-
-            timeSinceDeployed += Time.deltaTime;
-
-            if(timeSinceDeployed >= data.DropToFireTime && !launched)
-            {
-                launched = true;
-                Armorysticks.Logger.Log("LAUNCHING");
-            }
-
-            if (!launched) return;
-
-            timeSinceLaunched += Time.deltaTime;
-
-        }
-
-        private void FixedUpdate()
-        {
-            if(!launched) return;
-            //if (!launched || Position.Distance(dropPos, transform.Position) >= oprangemeters) return;
-
-            float acceleration = (data.MaxSpeed - rb.activeRigidBody.velocity.magnitude) / timeSinceLaunched;
-            rb.activeRigidBody.AddForce(acceleration * part.transform.forward * Time.deltaTime, ForceMode.Acceleration);
-
-            //UPDATE IN FUTURE TO BE MORE ACUATE SUCH AS TAKING INTO ACCOUNT PLANET CURVATURE.
-
-            Vector3d p1 = GameManager.Instance.Game.UniverseView.PhysicsSpace.PositionToPhysics(Radar.VesselLocks[pastParent].pos); //Radar Blip
-            Vector3 p2 = part.transform.position;     //Parent
-
-            if (rb.activeRigidBody.velocity.magnitude > data.MaxSpeed)
-            {
-                rb.activeRigidBody.velocity = rb.activeRigidBody.velocity.normalized * data.MaxSpeed;
-            }
-
-        }
-
-
-
-        //Overrides
-
-        public override void OnShutdown()
-        {
-            base.OnShutdown();
-        }
-
-
-
-        //Private
-
-        private void StageLaunch()
-        {
-            if(launched || deployed) return;
-            Launch(true);
-        }
-
-
-
-        //Public
-
-        public void Launch(bool state)
-        {
-            if (launched || deployed) return;
-
-            pastParent = GameManager.Instance.Game.ViewController.GetActiveSimVessel(true);
-
-            Module_Decouple de = GetComponent<Module_Decouple>();
+            if (dataMissile.Deployed.GetValue() == true) return;
+            Module_Decouple de = part.GetComponent<Module_Decouple>();
             de.OnDecouple();
-
-            dropPos = transform.Position;
-
-            rb = part.GetComponent<RigidbodyBehavior>();
-
-            data = JSONSave.Weapons[part.SimObjectComponent.Name];
-            oprangemeters = data.OperationalRange * 1000;
-
-            deployed = true;
-
+            WeaponJSONSaveData data = JSONSave.Weapons[part.SimObjectComponent.Name];
             KSPBaseAudio.PostEvent(data.AudioFire, gameObject);
             KSPBaseAudio.PostEvent(data.AudioBaseStart, gameObject);
 
+            dataMissile.Deployed.SetValue(true);
         }
-
-        public void CameraToggle()
-        {
-
-        }
-
     }
 }
