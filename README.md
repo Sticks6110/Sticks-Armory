@@ -19,10 +19,16 @@ The current release date of this mod is unknown.
 - [@Bandit2710](https://www.github.com/Bandit2710)
 - [@MeowserLJC](https://www.github.com/MeowserLJC)
 - Vulpy#5715
+- [@letouo](https://www.github.com/letouo)
+- [@Kematian1548](https://www.github.com/Kematian1548)
+
 
 ### Contibutors
+### Coding
+- Penguin35
 #### 3D Art
 - [@IsaQuest](https://forum.kerbalspaceprogram.com/index.php?/profile/207767-isaquest/)
 - [@maxBRRRRRRRRRRRRRRRT](https://github.com/hex50core)
+- Coucoul38
 #### Helping
 - [@CrtfdLvrCosta (LuxStice)](https://github.com/LuxStice)
