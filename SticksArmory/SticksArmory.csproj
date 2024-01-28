@@ -39,6 +39,8 @@
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\netstandard2.1\Assembly-CSharp.dll</HintPath>
+		<Publicize>true</Publicize>
+		<Private>false</Private>
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\..\netstandard2.1\BepInEx.dll</HintPath>

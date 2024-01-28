@@ -103,9 +103,7 @@ namespace SticksArmory.Modules
             // Code was taken from Missile Code, leaving this line in case it causes issues-> rb.activeRigidBody.AddForce(acceleration * part.transform.forward * Time.deltaTime, ForceMode.Acceleration);
 
             //UPDATE IN FUTURE TO BE MORE ACURATE SUCH AS TAKING INTO ACCOUNT PLANET CURVATURE.
-
-            //Line below was for locating Radar Target, might use this for GPS later
-            //Vector3d p1 = GameManager.Instance.Game.UniverseView.PhysicsSpace.PositionToPhysics(Radar.VesselLocks[pastParent].pos);
+            
             Vector3 p2 = part.transform.position;     //Parent
 
             if (rb.activeRigidBody.velocity.magnitude > data.MaxSpeed)
@@ -115,15 +113,12 @@ namespace SticksArmory.Modules
 
         }
 
-
-
         //Overrides
 
         public override void OnShutdown()
         {
             base.OnShutdown();
         }
-
 
 
         //Private
@@ -135,7 +130,6 @@ namespace SticksArmory.Modules
         }
 
 
-
         //Public
 
         public void Launch(bool state, bool GPSuse)
@@ -143,16 +137,14 @@ namespace SticksArmory.Modules
             if (launched || deployed) return; //this line needs to go if gps guidance works from below
             bool Guidance = false; //for now true = gps and false = dumb
             
-            if (Guidance)
+            if (Guidance || launched || deployed)
             {
-                //do guidance things
+                GPSGuidance();
             }
-            else if (launched || deployed)
+            else if (!Guidance || launched || deployed)
             {
                 return;
             }
-
-            //the rest from here on is 1:1 the missile script
 
             pastParent = GameManager.Instance.Game.ViewController.GetActiveSimVessel(true);
 
@@ -171,6 +163,16 @@ namespace SticksArmory.Modules
             KSPBaseAudio.PostEvent(data.AudioFire, gameObject);
             KSPBaseAudio.PostEvent(data.AudioBaseStart, gameObject);
 
+        }
+
+        public void GPSGuidance()
+        {
+            //TODO: write code to get gps coordinates and guide the bomb from release point to there
+
+            //Line below was for locating Radar Target and included with the FixedUpdate function, might use this for GPS later
+            //Vector3d p1 = GameManager.Instance.Game.UniverseView.PhysicsSpace.PositionToPhysics(Radar.VesselLocks[pastParent].pos);
+
+            return;
         }
 
         public void CameraToggle()
