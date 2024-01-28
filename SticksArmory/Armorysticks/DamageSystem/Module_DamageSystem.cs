@@ -47,7 +47,7 @@ namespace SticksArmory.Armorysticks.DamageSystem
 
         public override void OnInitialize()
         {
-            SticksArmory.Armorysticks.Logger.Log(part.Name);
+            
         }
 
         private void DamageComponents()

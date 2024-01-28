@@ -9,6 +9,7 @@ using SticksArmory.Modules;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 using UnityEngine.Serialization;
 using static KSP.Sim.Definitions.PartBehaviourModule;
 
@@ -24,6 +25,9 @@ namespace SticksArmory.Armorysticks.Patch
 
         public static void Postfix(PartBehaviourModule __instance)
         {
+
+            return; //RETURN FOR NOW BECAUSE OF ERRORS JESUS CHRIST I CANT TAKE THIS ANYMORE JUST LET ME SEE MY FUCKING PARTS
+
             if (__instance.PartBackingMode != PartBackingModes.Flight || !ArmorysticksMod.ValidScene) return;
             if (UniqueParts.Contains(__instance.part)) return;
             if (!JSONSave.Parts.ContainsKey(__instance.part.Name)) return;

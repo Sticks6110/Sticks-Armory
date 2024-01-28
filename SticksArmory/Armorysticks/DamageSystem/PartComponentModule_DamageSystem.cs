@@ -12,7 +12,7 @@ namespace SticksArmory.Armorysticks.DamageSystem
         {
             get
             {
-                return typeof(PartComponentModule_DamageSystem);
+                return typeof(Module_DamageSystem);
             }
         }
     }
