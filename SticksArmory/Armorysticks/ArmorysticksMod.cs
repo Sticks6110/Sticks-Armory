@@ -27,6 +27,7 @@ using KSP.Audio;
 namespace Armorysticks
 {
     [BepInPlugin(ModGuid, ModName, ModVer)]
+    [BepInDependency(SpaceWarpPlugin.ModGuid, SpaceWarpPlugin.ModVer)]
     public class ArmorysticksMod : BaseSpaceWarpPlugin
     {
         
@@ -59,12 +60,12 @@ namespace Armorysticks
 
         public override void OnPreInitialized()
         {
+            //Path = SWMetadata.Folder.ToString();
             Path = PluginFolderPath;
 
             SticksArmory.Armorysticks.Logger.Log("Patching");
 
             Harmony.CreateAndPatchAll(typeof(ArmorysticksMod).Assembly);
-
         }
 
         public override void OnInitialized()
@@ -106,7 +107,7 @@ namespace Armorysticks
 
         public void OnGUI()
         {
-            SettingsWindow.OnGUI();
+            //SettingsWindow.OnGUI();
         }
 
         public void CreateMainMenuItem()
@@ -121,7 +122,7 @@ namespace Armorysticks
                 TMP_Text btnText = btn.GetComponentInChildren<TMP_Text>();
                 btnText.text = "Sticks Armory";
                 Destroy(btn.GetComponentInChildren<UIAction_Void_Button>());
-                btn.GetComponentInChildren<UIAction_Void_Button>().button.onClick.AddListener(SettingsWindow.SettingsMenuOpened);
+                //btn.GetComponentInChildren<UIAction_Void_Button>().button.onClick.AddListener(SettingsWindow.SettingsMenuOpened);
                 
                 uiLoaded = true;
 

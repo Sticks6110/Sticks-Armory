@@ -5,18 +5,19 @@ using HarmonyLib;
 using I2.Loc;
 using KSP;
 using KSP.OAB;
+using KSP.Sim.impl;
+using KSP.UI;
 using RTG;
 using SticksArmory.Armorysticks;
 
 namespace SticksArmory.Patch
 {
-    [HarmonyPatch(typeof(ObjectAssemblyFlexibleModal), nameof(ObjectAssemblyFlexibleModal.GetPriorityInfoFromPart))]
+    [HarmonyPatch(typeof(PartInfoOverlay), nameof(PartInfoOverlay.PopulateCoreInfoFromPart))]
     class PrioriteInfo
     {
 
         public static void Postfix(ref List<KeyValuePair<string, string>> __result, IObjectAssemblyAvailablePart IOBAPart)
         {
-
             if (JSONSave.Parts.ContainsKey(IOBAPart.PartData.partName))
             {
                 PartJSONSaveData data = JSONSave.Parts[IOBAPart.PartData.partName];

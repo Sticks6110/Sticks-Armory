@@ -73,7 +73,7 @@ namespace SticksArmory.Armorysticks.Monobehaviors
         {
             if (!Show || !ArmorysticksMod.ValidScene) return;
 
-            GUI.skin = SpaceWarp.API.UI.Skins.ConsoleSkin;
+            //GUI.skin = SpaceWarp.API.UI.Skins.ConsoleSkin;
             rect = GUILayout.Window(GUIUtility.GetControlID(FocusType.Passive), rect, PopulateWindow, "Radar", GUILayout.Height(270), GUILayout.Width(250));
         }
 

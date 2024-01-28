@@ -63,6 +63,8 @@ namespace SticksArmory.Armorysticks.Patch
             KSPBaseAudio.PostEvent(d.AudioBaseStop, __instance.gameObject);
             KSPBaseAudio.PostEvent(snd, __instance.gameObject);
 
+            Logger.Log(snd);
+
             return false;
 
         }

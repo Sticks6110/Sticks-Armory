@@ -11,6 +11,7 @@ using KSP.Modules;
 using HarmonyLib;
 using System.Runtime.CompilerServices;
 using SticksArmory.Armorysticks;
+using Newtonsoft.Json;
 
 namespace SticksArmory.Modules
 {
@@ -30,6 +31,9 @@ namespace SticksArmory.Modules
         [KSPDefinition]
         public string JSONId = "name.json";
 
+        [JsonIgnore]
+        public ModuleProperty<bool> Deployed = new(false);
+
         private WeaponJSONSaveData UncipheredJson = null;
 
         public void LoadJson()
@@ -37,6 +41,8 @@ namespace SticksArmory.Modules
             UncipheredJson = JSONSave.Weapons[JSONId];
 
         }
+
+
 
     }
 }

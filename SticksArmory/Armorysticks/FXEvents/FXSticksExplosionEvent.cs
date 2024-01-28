@@ -97,7 +97,7 @@ namespace SticksArmory.Armorysticks.FXEvents
             Armorysticks.Logger.Log("EXPLOSION");
         }
 
-        public override string SelectPrefab(FXContextData context)
+        public override string GetVFXPrefabName(FXContextData context)
         {
             return "fx_explosion_sticks/" + effect.name;
         }
