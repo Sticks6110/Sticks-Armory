@@ -23,7 +23,18 @@ namespace SticksArmory.Armorysticks.DamageSystem
 
                     float dist = (float)Position.DistanceSqr(pos, p.transform.Position);
 
-                    out_damageSystem.Damage(1 / (Mathf.Pow(dist, 2)), false);
+                    Vector3 _pos = GameManager.Instance.Game.UniverseView.PhysicsSpace.PositionToPhysics(pos);
+                    Vector3 _partpos = p.transform.Position(_partpos);
+
+                    if (Physics.Linecast(_pos,_partpos, out RaycastHit hit, data.ExplosionRadius))
+                    {
+                        PartBehavior componentInParent = hit.collider.transform.gameObject.GetComponentInParent<PartBehavior>();
+                        if (componentInParent == null/*||data.ExplosionArmorPenetration<=p.WeaponJSONSaveData.Armor*/) return;
+                    }
+                    else
+                    {
+                        out_damageSystem.Damage(1 / (Mathf.Pow(dist, 2)), false);
+                    }
 
                 }
             }
