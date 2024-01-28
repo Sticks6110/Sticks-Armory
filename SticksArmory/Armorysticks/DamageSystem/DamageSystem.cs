@@ -40,6 +40,34 @@ namespace SticksArmory.Armorysticks.DamageSystem
             }
 
         }
+        public static void Shrapnell(WeaponJSONSaveData data, Position pos, Rotation rot, UniverseModel universe)
+        {
+            Vector3 _dir = GameManager.Instance.Game.UniverseView.PhysicsSpace.RotationToPhysics(rot).eulerAngles;
+            Vector3 _pos = GameManager.Instance.Game.UniverseView.PhysicsSpace.PositionToPhysics(pos);
+            //Get unity space pos and dir
+
+            for (int i = 0; i < data.ShrapnellCount; i++)
+            {
+                float lat = UnityEngine.Random.Range(-data.ShrapnellArmorPenetration, data.ShrapnellMaxAngle); //Get its lateral
+                float lon = UnityEngine.Random.Range(-data.ShrapnellArmorPenetration, data.ShrapnellMaxAngle); //Get its longitude
+
+                Vector3 _divergant = (lat * Vector3.up) + (lon * Vector3.right); //Create its diverged direction
+
+                if (Physics.Raycast(_pos, _dir + _divergant, out RaycastHit hit, 300))
+                {
+
+                    PartBehavior componentInParent = hit.collider.transform.gameObject.GetComponentInParent<PartBehavior>();
+                    if (componentInParent == null) return;
+
+                    PartComponent _part = universe.FindPartComponent(componentInParent.Guid);
+
+                    if (_part.TryGetModuleData<PartComponentModule_DamageSystem, Data_DamageSystem>(out Data_DamageSystem out_damageSystem)) //There is 100% probably a better way to do this without 2 FindComponent calls
+                    {
+                        out_damageSystem.Damage(data.ShrapnellDamage, false); //Add damage with this method
+
+                    }
+                }
+            }
         
     }
 }
