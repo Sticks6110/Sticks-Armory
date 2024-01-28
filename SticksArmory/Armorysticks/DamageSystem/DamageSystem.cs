@@ -18,15 +18,15 @@ namespace SticksArmory.Armorysticks.DamageSystem
 
             foreach (PartComponent p in explosionDamageParts)
             {
-                if(p.TryGetModuleData<PartComponentModule_DamageSystem, Data_DamageSystem>(out Data_DamageSystem out_damageSystem))
+                if (p.TryGetModuleData<PartComponentModule_DamageSystem, Data_DamageSystem>(out Data_DamageSystem out_damageSystem))
                 {
 
                     float dist = (float)Position.DistanceSqr(pos, p.transform.Position);
 
                     Vector3 _pos = GameManager.Instance.Game.UniverseView.PhysicsSpace.PositionToPhysics(pos);
-                    Vector3 _partpos = p.transform.Position(_partpos);
+                    Vector3 _partpos = GameManager.Instance.Game.UniverseView.PhysicsSpace.PositionToPhysics(p.transform.Position);
 
-                    if (Physics.Linecast(_pos,_partpos, out RaycastHit hit, data.ExplosionRadius))
+                    if (Physics.Linecast(_pos, _partpos, out RaycastHit hit, 1000))
                     {
                         PartBehavior componentInParent = hit.collider.transform.gameObject.GetComponentInParent<PartBehavior>();
                         if (componentInParent == null/*||data.ExplosionArmorPenetration<=p.WeaponJSONSaveData.Armor*/) return;
@@ -36,10 +36,10 @@ namespace SticksArmory.Armorysticks.DamageSystem
                         out_damageSystem.Damage(1 / (Mathf.Pow(dist, 2)), false);
                     }
 
+
+
                 }
             }
-
-        }
         public static void Shrapnell(WeaponJSONSaveData data, Position pos, Rotation rot, UniverseModel universe)
         {
             Vector3 _dir = GameManager.Instance.Game.UniverseView.PhysicsSpace.RotationToPhysics(rot).eulerAngles;
