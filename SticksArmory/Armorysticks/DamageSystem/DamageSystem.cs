@@ -40,5 +40,6 @@ namespace SticksArmory.Armorysticks.DamageSystem
             }
 
         }
+        
     }
 }
