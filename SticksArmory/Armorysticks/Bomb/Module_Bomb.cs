@@ -140,20 +140,16 @@ namespace SticksArmory.Modules
 
         public void Launch(bool state, bool GPSuse)
         {
-            if (launched || deployed) return; //this line needs to go if gps guidance works from the switch case below
+            if (launched || deployed) return; //this line needs to go if gps guidance works from below
             bool Guidance = false; //for now true = gps and false = dumb
-            //just trying to setup some gps guidance for the bombs. the stupid dependencies dont fricking work so everything is guesswork
-            switch (Guidance){
-                case launched || deployed || !GPSuse:
-                    Guidance = false;
-                    //do Dumb bomb things
-                    break;
-                case launched || deployed || GPSuse:
-                    //Initiate GPS Guidance
-                    break;
-                default:
-                    return;
-
+            
+            if (Guidance)
+            {
+                //do guidance things
+            }
+            else if (launched || deployed)
+            {
+                return;
             }
 
             //the rest from here on is 1:1 the missile script

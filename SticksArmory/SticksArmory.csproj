@@ -37,6 +37,9 @@
     <Reference Include="AK.Wwise.Unity.Timeline">
       <HintPath>..\..\netstandard2.1\AK.Wwise.Unity.Timeline.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\netstandard2.1\Assembly-CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\..\netstandard2.1\BepInEx.dll</HintPath>
     </Reference>
