@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>11</LangVersion>
     <ImplicitUsings>true</ImplicitUsings>
@@ -16,91 +16,161 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>bin\Debug\netstandard2.0\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="Ak.Wwise.Api.WAAPI">
-      <HintPath>bin\Debug\netstandard2.0\Ak.Wwise.Api.WAAPI.dll</HintPath>
-    </Reference>
-    <Reference Include="AK.Wwise.Unity.API">
-      <HintPath>bin\Debug\netstandard2.0\AK.Wwise.Unity.API.dll</HintPath>
-    </Reference>
-    <Reference Include="AK.Wwise.Unity.API.WwiseTypes">
-      <HintPath>bin\Debug\netstandard2.0\AK.Wwise.Unity.API.WwiseTypes.dll</HintPath>
-    </Reference>
-    <Reference Include="AK.Wwise.Unity.MonoBehaviour">
-      <HintPath>bin\Debug\netstandard2.0\AK.Wwise.Unity.MonoBehaviour.dll</HintPath>
-    </Reference>
-    <Reference Include="AK.Wwise.Unity.Timeline">
-      <HintPath>bin\Debug\netstandard2.0\AK.Wwise.Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\KSP2_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
-	    <Publicize>true</Publicize>
-	    <Private>false</Private>
-    </Reference>
-    <Reference Include="BepInEx">
-      <HintPath>bin\Debug\netstandard2.0\BepInEx.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>bin\Debug\netstandard2.0\NewtonSoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="SpaceWarp">
-      <HintPath>D:\SteamLibrary\steamapps\common\Kerbal Space Program 2\BepInEx\plugins\SpaceWarp\SpaceWarp.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InputSystem">
-      <HintPath>bin\Debug\netstandard2.0\Unity.InputSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>bin\Debug\netstandard2.0\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.AssetBundleModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AudioModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.AudioModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.ImageConversionModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.InputLegacyModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.InputModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.JSONSerializeModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.ParticleSystemModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.PhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.UIElementsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIElementsNativeModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.UIElementsNativeModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIModule">
-      <HintPath>bin\Debug\netstandard2.0\UnityEngine.UIModule.dll</HintPath>
-    </Reference>
+    <Folder Include="Armorysticks\GUI\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Armorysticks\GUI\" />
+    <Reference Include="0Harmony">
+      <HintPath>..\..\netstandard2.1\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Ak.Wwise.Api.WAAPI">
+      <HintPath>..\..\netstandard2.1\Ak.Wwise.Api.WAAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="AK.Wwise.Unity.API">
+      <HintPath>..\..\netstandard2.1\AK.Wwise.Unity.API.dll</HintPath>
+    </Reference>
+    <Reference Include="AK.Wwise.Unity.API.WwiseTypes">
+      <HintPath>..\..\netstandard2.1\AK.Wwise.Unity.API.WwiseTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="AK.Wwise.Unity.MonoBehaviour">
+      <HintPath>..\..\netstandard2.1\AK.Wwise.Unity.MonoBehaviour.dll</HintPath>
+    </Reference>
+    <Reference Include="AK.Wwise.Unity.Timeline">
+      <HintPath>..\..\netstandard2.1\AK.Wwise.Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\..\netstandard2.1\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>..\..\netstandard2.1\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\netstandard2.1\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SpaceWarp">
+      <HintPath>..\..\netstandard2.1\SpaceWarp.dll</HintPath>
+    </Reference>
+    <Reference Include="SpaceWarp.Core">
+      <HintPath>..\..\netstandard2.1\SpaceWarp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\..\netstandard2.1\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\netstandard2.1\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\netstandard2.1\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.AndroidJNIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ContentLoadModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.ContentLoadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.DSPGraphModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.LocalizationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.NVIDIAModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.NVIDIAModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.StreamingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.TLSModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\netstandard2.1\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.UnityCurlModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VirtualTexturingModule">
+      <HintPath>..\..\netstandard2.1\UnityEngine.VirtualTexturingModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
