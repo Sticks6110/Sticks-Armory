@@ -35,8 +35,6 @@ namespace SticksArmory.Armorysticks.Missile
         private bool deployed;
         private bool launched;
 
-        private RigidbodyComponent rb;
-
         public WeaponJSONSaveData data;
 
         private VesselComponent pastParent;
@@ -78,30 +76,27 @@ namespace SticksArmory.Armorysticks.Missile
         {
             if (!launched) return;
 
+            //Part.t
+
             //if(rb.activeRigidBody.velocity.magnitude < data.MaxSpeed)
             //{
             //float acceleration = (data.MaxSpeed - rb.activeRigidBody.velocity.magnitude) / timeSinceLaunched;
             //rb.activeRigidBody.AddForce(acceleration * part.transform.forward * Time.deltaTime, ForceMode.Acceleration);
             //}
 
-            Vector3d ThrustDir = Part.transform.forward.vector;
-            Vector3d ThrustPos = Vector3d.zero;
 
-            Force.ForceMode = ForceType.Force;
-            Force.RelativeForce = data.MaxSpeed * ThrustDir;
-            Force.RelativePosition = ThrustPos;
 
-            Blip _lock = null;
+            //Blip _lock = null;
 
-            if (Monobehaviors.Radar.VesselLocks.TryGetValue(pastParent, out _lock))
-            {
+            //if (Monobehaviors.Radar.VesselLocks.TryGetValue(pastParent, out _lock))
+            //{
 
                 //Position p1 = _lock.pos;
                 //Position p2 = Part.transform.Position;
 
                 //rb.Model.AngularVelocity = new AngularVelocity(rb.Model.relativeToMotion, Vector.scale(Vector.cross(p2 - p1, transform.forward), data.TurnSpeed));
 
-            }
+            //}
         }
 
         public void Launch()
@@ -110,14 +105,9 @@ namespace SticksArmory.Armorysticks.Missile
 
             pastParent = GameManager.Instance.Game.ViewController.GetActiveSimVessel(true);
 
-            rb = Part.SimulationObject.Rigidbody;
-
             data = JSONSave.Weapons[Part.SimulationObject.Name];
 
             deployed = true;
-
-            Force = new EngineForce();
-            rb.AddForce(Force);
 
         }
     }

@@ -57,8 +57,15 @@ namespace SticksArmory.Modules
         public void StageLaunch()
         {
             if (dataMissile.Deployed.GetValue() == true) return;
+
             Module_Decouple de = part.GetComponent<Module_Decouple>();
             de.OnDecouple();
+
+            //part.vessel.flightCtrlState.CutThrottle();
+
+            Module_Engine ee = part.GetComponent<Module_Engine>();
+            ee.StageEngine();
+
             WeaponJSONSaveData data = JSONSave.Weapons[part.SimObjectComponent.Name];
             KSPBaseAudio.PostEvent(data.AudioFire, gameObject);
             KSPBaseAudio.PostEvent(data.AudioBaseStart, gameObject);

@@ -27,6 +27,7 @@ using KSP.Audio;
 namespace Armorysticks
 {
     [BepInPlugin(ModGuid, ModName, ModVer)]
+    [BepInDependency(SpaceWarpPlugin.ModGuid, SpaceWarpPlugin.ModVer)]
     public class ArmorysticksMod : BaseSpaceWarpPlugin
     {
         
@@ -59,12 +60,12 @@ namespace Armorysticks
 
         public override void OnPreInitialized()
         {
+            //Path = SWMetadata.Folder.ToString();
             Path = PluginFolderPath;
 
             SticksArmory.Armorysticks.Logger.Log("Patching");
 
             Harmony.CreateAndPatchAll(typeof(ArmorysticksMod).Assembly);
-
         }
 
         public override void OnInitialized()
