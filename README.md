@@ -2,12 +2,13 @@
 # Sticks Armory
 
 A mod for Kerbal Space Program 2 thats adds in both modern and old weapons for combat
+This branch probably is either broken, goofy ah, or actually good. Depends on the day and what im working on so don't use it for anything.
 
 #### Discord
 https://discord.gg/pFusqNVbjN
 
 ## Release
-The current release date of this mod is unknown.
+"Between now and the heat death of the universe" —Sticks
 
 ## Developers
 #### Coding
