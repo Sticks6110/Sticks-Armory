@@ -15,8 +15,16 @@ using static KSP.Sim.Definitions.PartBehaviourModule;
 
 namespace SticksArmory.Armorysticks.Patch
 {
+
+    /*
+     * 
+     *  DO NOT USE THIS, THIS IS JUST HERE FOR REFERENCE AS THIS HAS BEEN MOVED TO THE PATCH MANAGER
+     * 
+    */
+
+
     //AddDataModules PartBehaviourModule
-    [HarmonyPatch(typeof(PartBehaviourModule), nameof(PartBehaviourModule.OnInitialize))]
+    /*[HarmonyPatch(typeof(PartBehaviourModule), nameof(PartBehaviourModule.OnInitialize))]
     public class AddDataModules
     {
 
@@ -25,9 +33,6 @@ namespace SticksArmory.Armorysticks.Patch
 
         public static void Postfix(PartBehaviourModule __instance)
         {
-
-            return; //RETURN FOR NOW BECAUSE OF ERRORS JESUS CHRIST I CANT TAKE THIS ANYMORE JUST LET ME SEE MY FUCKING PARTS
-
             if (__instance.PartBackingMode != PartBackingModes.Flight || !ArmorysticksMod.ValidScene) return;
             if (UniqueParts.Contains(__instance.part)) return;
             if (!JSONSave.Parts.ContainsKey(__instance.part.Name)) return;
@@ -64,5 +69,5 @@ namespace SticksArmory.Armorysticks.Patch
             Radars[part].Show = !Radars[part].Show;
         }
 
-    }
+    }*/
 }

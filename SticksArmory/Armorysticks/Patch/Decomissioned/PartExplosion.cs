@@ -21,7 +21,7 @@ using RTG;
 
 namespace SticksArmory.Armorysticks.Patch
 {
-    [HarmonyPatch(typeof(PartBehavior), nameof(PartBehavior.TriggerSurfaceImpactEffect))]
+    /*[HarmonyPatch(typeof(PartBehavior), nameof(PartBehavior.TriggerSurfaceImpactEffect))] //OLD CODE STILL AVAILABLE FOR REFERENCE
     class PartExplosion
     {
 
@@ -69,5 +69,5 @@ namespace SticksArmory.Armorysticks.Patch
 
         }
 
-    }
+    }*/
 }

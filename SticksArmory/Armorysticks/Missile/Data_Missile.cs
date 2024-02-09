@@ -31,9 +31,6 @@ namespace SticksArmory.Modules
         [KSPDefinition]
         public string JSONId = "name.json";
 
-        [JsonIgnore]
-        public ModuleProperty<bool> Deployed = new(false);
-
         private WeaponJSONSaveData UncipheredJson = null;
 
         public void LoadJson()
