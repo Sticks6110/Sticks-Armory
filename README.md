@@ -1,3 +1,5 @@
+**THIS MOD IS NO LONGER BEING WORKED ON DUE TO KSP 2 BEIN DISCONTINUED**
+
 ![](https://raw.githubusercontent.com/BeastBomber23/Sticks-Arsenal/main/assets/Banner.png)
 # Sticks Armory
 
