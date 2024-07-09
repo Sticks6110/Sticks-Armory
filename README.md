@@ -1,4 +1,4 @@
-**THIS MOD IS NO LONGER BEING WORKED ON DUE TO KSP 2 BEIN DISCONTINUED**
+**THIS MOD IS NO LONGER BEING WORKED ON DUE TO THE CLOSURE OF INTERCEPT GAMES**
 
 ![](https://raw.githubusercontent.com/BeastBomber23/Sticks-Arsenal/main/assets/Banner.png)
 # Sticks Armory
